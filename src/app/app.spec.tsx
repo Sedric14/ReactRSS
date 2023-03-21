@@ -10,7 +10,7 @@ describe('App', () => {
   it('should render successfully', () => {
     render(<Card />);
     expect(screen.getAllByAltText('img')).toBeTruthy();
-    expect(screen.getAllByText("Смешарики. ДежаВю")).toBeTruthy();
+    expect(screen.getAllByText('Смешарики. ДежаВю')).toBeTruthy();
   });
 
   it('should have a list cards', () => {
@@ -24,6 +24,6 @@ describe('App', () => {
   });
 
   it('should show correct time', () => {
-    expect(time(data[0].time)).toBe("1:25:10");
-  })
+    expect(time(data[0].time)).toBe('1:25:10');
+  });
 });

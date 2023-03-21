@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import Board from "components/card";
-import Search from "components/search";
+import React, { Component } from 'react';
+import Board from 'components/card';
+import Search from 'components/search';
 
 class Home extends Component {
   componentDidMount() {

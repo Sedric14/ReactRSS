@@ -6,13 +6,15 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "test:coverage": "vitest run --environment jsdom --coverage"
+    "test:coverage": "vitest run --environment jsdom --coverage",
+    "lint": "eslint src --ext .tsx,.ts"
   },
   "private": true,
   "dependencies": {
     "@testing-library/user-event": "^14.4.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.9.0"
   },
   "devDependencies": {
     "@nrwl/cypress": "15.8.6",
@@ -35,13 +37,13 @@
     "cypress": "^12.2.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-import-resolver-typescript": "^2.7.1",
-    "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
     "jsdom": "~20.0.3",
     "lint-staged": "^12.4.1",

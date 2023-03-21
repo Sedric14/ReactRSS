@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link, Route, Routes } from "react-router-dom";
-import About from "pages/about";
-import Home from "pages/home";
-import NotFound from "pages/notFound";
-import Listeners from "./Listeners";
+import React, { Component } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+import About from 'pages/about';
+import Home from 'pages/home';
+import NotFound from 'pages/notFound';
+import Listeners from './Listeners';
 
 class App extends Component {
   componentDidMount() {
