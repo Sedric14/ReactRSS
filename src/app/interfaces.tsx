@@ -7,4 +7,14 @@ interface ICard {
   link: string;
 }
 
+export interface FormFields {
+  name: string;
+  surname: string;
+  date: string;
+  check: boolean;
+  sex: string;
+  country: string;
+  file: string;
+}
+
 export default ICard;

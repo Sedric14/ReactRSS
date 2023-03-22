@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './app/app';
 
 if (!sessionStorage.getItem('page')) sessionStorage.setItem('page', 'Home');
+if (!localStorage.getItem('search')) localStorage.setItem('search', '');
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

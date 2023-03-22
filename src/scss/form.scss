@@ -1,0 +1,32 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  background-color: #818181;
+  width: 50%;
+  margin-left: 25%;
+  padding: 10px;
+
+  input{
+    height: 20px;
+  }
+
+  .label{
+    color: aliceblue;
+    margin: 5px;
+  }
+
+  .inputName,
+  .inputSurname{
+    margin: 5px;
+    height: 20px;
+    width: 300px;
+  }
+
+  .submit{
+    width: 200px;
+    height: 30px;
+    background-color: #c73434;
+    border-radius: 5px;
+    color: #ffffff;
+  }
+}
