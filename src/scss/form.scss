@@ -29,4 +29,42 @@
     border-radius: 5px;
     color: #ffffff;
   }
+
+  .errMess{
+    opacity: 0;;
+  }
+
+  .errDis{
+    color: #c73434;
+  }
 }
+
+.cardsForm {
+  display: flex;
+  flex-wrap: wrap;
+
+  .elem {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    color: #474646;
+    margin: 10px;
+    padding: 5px;
+    overflow: hidden;
+
+    .ava {
+      width: 50px;
+      height: 50px;
+    }
+
+    span {
+      color: #c73434;
+      font-weight: 600;
+      font-size: 120%;
+    }
+  }
+}
+
+
+
+  

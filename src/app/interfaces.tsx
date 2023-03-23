@@ -12,9 +12,10 @@ export interface FormFields {
   surname: string;
   date: string;
   check: boolean;
-  sex: string;
+  gender: string;
   country: string;
   file: string;
+  valid?: boolean;
 }
 
 export default ICard;

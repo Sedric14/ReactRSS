@@ -35,7 +35,7 @@ class App extends Component {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/forms" element={<Forms />} />
+              <Route path="/forms" element={<Forms name="" />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

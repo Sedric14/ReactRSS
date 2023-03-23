@@ -1,76 +1,196 @@
-// import { FormFields } from 'app/interfaces';
 import { FormFields } from 'app/interfaces';
 import Valid from 'app/Validation';
-import React, { Component, FormEventHandler, LegacyRef } from 'react';
+import React, { Component, FormEventHandler } from 'react';
 
-class Forms extends Component {
-  input: LegacyRef<HTMLInputElement> | undefined;
-  inputSurname: LegacyRef<HTMLInputElement> | undefined;
-  inputBirthday: LegacyRef<HTMLInputElement> | undefined;
-  inputCheckbox: LegacyRef<HTMLInputElement> | undefined;
-  inputSex: LegacyRef<HTMLInputElement> | undefined;
-  inputFile: LegacyRef<HTMLInputElement> | undefined;
-  inputCountry: LegacyRef<HTMLSelectElement> | undefined;
+interface IProps {
+  name: string;
+}
+
+interface IState {
+  nameValid: boolean;
+  surnameValid: boolean;
+  dateValid: boolean;
+  checkValid: boolean;
+  fileValid: boolean;
+}
+
+class Forms extends Component<IProps, IState> {
+  static arr: FormFields[] = [];
+  static fields: FormFields = {
+    name: '',
+    surname: '',
+    date: '',
+    check: false,
+    gender: '',
+    file: '',
+    country: '',
+  };
   inputSubmit: FormEventHandler<HTMLInputElement> | undefined;
-  name: string | undefined;
-  surname: string | undefined;
-  nameIsValid = false;
-  constructor(props: FormFields) {
+  surname: HTMLInputElement | null | undefined;
+  name: HTMLInputElement | null | undefined;
+  birthday: HTMLInputElement | null | undefined;
+  check: HTMLInputElement | null | undefined;
+  male: HTMLInputElement | null | undefined;
+  female: HTMLInputElement | null | undefined;
+  file: HTMLInputElement | null | undefined;
+  country: HTMLSelectElement | null | undefined;
+
+  constructor(props: IProps) {
     super(props);
-    const name = this.name;
-    const nameIsValid = Valid.isName(name);
+    this.state = {
+      nameValid: true,
+      surnameValid: true,
+      dateValid: true,
+      checkValid: true,
+      fileValid: true,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.inputSurname = React.createRef();
-    this.inputBirthday = React.createRef();
-    this.inputCheckbox = React.createRef();
-    this.inputSex = React.createRef();
-    this.inputCountry = React.createRef();
-    this.inputFile = React.createRef();
-    // this.inputSubmit = React.createRef();
   }
 
-  handleSubmit() {
-    if (this.nameIsValid) {
-      alert(this.name);
+  handleSubmit(event: React.FormEvent | undefined) {
+    if (Valid.isName(this.name?.value)) {
+      this.setState({ nameValid: true });
+      Forms.fields.name = this.name?.value as string;
     } else {
-      alert(this.nameIsValid);
+      this.setState({ nameValid: false });
+      Forms.fields.name = '';
     }
-    // event.preventDefault();
+
+    if (Valid.isName(this.surname?.value)) {
+      this.setState({ surnameValid: true });
+      Forms.fields.surname = this.surname?.value as string;
+    } else {
+      this.setState({ surnameValid: true });
+      Forms.fields.surname = '';
+    }
+
+    if (Valid.isYear(this.birthday?.value)) {
+      this.setState({ dateValid: true });
+      Forms.fields.date = this.birthday?.value as string;
+    } else {
+      this.setState({ dateValid: false });
+      Forms.fields.date = '';
+    }
+
+    Forms.fields.country = this.country?.value as string;
+    if (this.check?.checked) {
+      this.setState({ checkValid: true });
+      Forms.fields.check = true;
+    } else {
+      this.setState({ checkValid: false });
+      Forms.fields.check = false;
+    }
+
+    if (this.male?.checked) {
+      Forms.fields.gender = 'male';
+    } else {
+      Forms.fields.gender = 'female';
+    }
+
+    if (this.file?.value) {
+      this.setState({ fileValid: true });
+      const arr = this.file.files;
+      if (arr) Forms.fields.file = URL.createObjectURL(arr[0]);
+    } else {
+      this.setState({ fileValid: false });
+      Forms.fields.file = '';
+    }
+
+    if (Valid.all(Forms.fields)) {
+      const n = Object.assign({}, Forms.fields);
+      Forms.arr.push(n);
+      console.log(Forms.arr);
+    }
+    if (event) event.preventDefault();
   }
 
-  render(): React.ReactNode {
+  // addState() {
+  //   this.setState(() => {
+  //     return {
+  //       name: this.name?.value as string,
+  //       surname: this.surname?.value as string,
+  //       date: this.birthday?.value as string,
+  //     };
+  //   });
+  // }
+
+  // addValid() {
+  //   // this.setState(() => {
+  //   //   return {
+  //   //     valid: true,
+  //   //   };
+  //   // });
+  // }
+
+  render() {
+    console.log(Forms.fields);
     sessionStorage.setItem('page', 'Forms');
     const headerText = document.querySelector('.headerText');
     if (headerText) headerText.innerHTML = `${sessionStorage.getItem('page')}`;
+    const result = Forms.arr.map((element, index) => {
+      return (
+        <div className="elem" key={index}>
+          <p>
+            name: <span>{element.name}</span>
+          </p>
+          <p>
+            surname: <span>{element.surname}</span>
+          </p>
+          <p>
+            birthday: <span>{element.date}</span>
+          </p>
+          <p>
+            country: <span>{element.country}</span>
+          </p>
+          <p>
+            gender: <span>{element.gender}</span>
+          </p>
+          <img className="ava" src={element.file} alt="avatar"></img>
+        </div>
+      );
+    });
+    const nameClass = this.state.nameValid === true ? 'errMess' : 'errDis';
+    const surnameClass = this.state.surnameValid === true ? 'errMess' : 'errDis';
+    const dateClass = this.state.dateValid === true ? 'errMess' : 'errDis';
+    const checkClass = this.state.checkValid === true ? 'errMess' : 'errDis';
+    const fileClass = this.state.fileValid === true ? 'errMess' : 'errDis';
     return (
       <div>
         <h1 className="title">Forms page</h1>
-        <form className="form">
+        <form className="form" onSubmit={this.handleSubmit}>
           <label className="label">
             Name:
             <input
               className="inputName"
               defaultValue="John"
               type="text"
-              ref={(input) => (this.name = input?.value)}
+              ref={(input) => (this.name = input)}
             />
           </label>
+          <p className={nameClass}>Please enter a valid name</p>
           <label className="label">
             Surname:
             <input
               className="inputSurname"
-              defaultValue="Dow"
+              defaultValue="Doe"
               type="text"
-              ref={(input) => (this.surname = input?.value)}
+              ref={(input) => (this.surname = input)}
             />
           </label>
+          <p className={surnameClass}>Please enter a valid surname</p>
           <label className="label">
             Birthday:
-            <input className="inputBirthday" type="date" ref={this.inputBirthday} />
+            <input
+              className="inputBirthday"
+              defaultValue="1995-01-01"
+              type="date"
+              ref={(input) => (this.birthday = input)}
+            />
           </label>
+          <p className={dateClass}>Please enter a valid date</p>
           <label className="label">
             Country:
-            <select ref={this.inputCountry}>
+            <select ref={(input) => (this.country = input)}>
               <option value="Ukraine">Ukraine</option>
               <option value="Belarus">Belarus</option>
               <option value="Latvia">Latvia</option>
@@ -79,24 +199,49 @@ class Forms extends Component {
           </label>
           <label className="label">
             I consent to my personal data:
-            <input className="inputCheckbox" type="checkbox" ref={this.inputCheckbox} />
+            <input
+              className="inputCheckbox"
+              type="checkbox"
+              defaultChecked
+              ref={(input) => (this.check = input)}
+            />
+          </label>
+          <p className={checkClass}>Check to submit the form</p>
+          <label className="label">
+            Male:
+            <input
+              defaultChecked
+              className="inputGender"
+              type="radio"
+              name="gender"
+              value="male"
+              ref={(input) => (this.male = input)}
+            />
           </label>
           <label className="label">
-            Male/Female:
-            <input className="inputSex" type="radio" ref={this.inputSex} />
+            Female:
+            <input
+              className="inputGender"
+              type="radio"
+              name="gender"
+              value="female"
+              ref={(input) => (this.female = input)}
+            />
           </label>
           <label className="label">
             File:
-            <input className="inputFile" type="file" ref={this.inputFile} />
+            <input
+              className="inputFile"
+              type="file"
+              name="gender"
+              accept="image/*"
+              ref={(input) => (this.file = input)}
+            />
           </label>
-          <input
-            className="submit"
-            type="submit"
-            value="Отправить"
-            // ref={this.inputSubmit}
-            onClick={this.handleSubmit}
-          />
+          <p className={fileClass}>Choose an image</p>
+          <input className="submit" type="submit" value="Отправить" />
         </form>
+        <div className="cardsForm">{result}</div>
       </div>
     );
   }
