@@ -7,24 +7,18 @@ interface IProps {
 }
 
 interface IState {
+  messageValid: boolean;
   nameValid: boolean;
   surnameValid: boolean;
   dateValid: boolean;
   checkValid: boolean;
   fileValid: boolean;
+  arr: FormFields[];
+  fields: FormFields;
+  message: string;
 }
 
 class Forms extends Component<IProps, IState> {
-  static arr: FormFields[] = [];
-  static fields: FormFields = {
-    name: '',
-    surname: '',
-    date: '',
-    check: false,
-    gender: '',
-    file: '',
-    country: '',
-  };
   inputSubmit: FormEventHandler<HTMLInputElement> | undefined;
   surname: HTMLInputElement | null | undefined;
   name: HTMLInputElement | null | undefined;
@@ -38,96 +32,107 @@ class Forms extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
+      fields: {
+        name: '',
+        surname: '',
+        date: '',
+        check: false,
+        gender: '',
+        file: '',
+        country: '',
+      },
+      arr: [],
       nameValid: true,
       surnameValid: true,
       dateValid: true,
       checkValid: true,
       fileValid: true,
+      messageValid: false,
+      message: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event: React.FormEvent | undefined) {
+    const f = Object.assign({}, this.state.fields);
     if (Valid.isName(this.name?.value)) {
       this.setState({ nameValid: true });
-      Forms.fields.name = this.name?.value as string;
+      f.name = this.name?.value as string;
     } else {
       this.setState({ nameValid: false });
-      Forms.fields.name = '';
+      f.name = '';
     }
 
     if (Valid.isName(this.surname?.value)) {
       this.setState({ surnameValid: true });
-      Forms.fields.surname = this.surname?.value as string;
+      f.surname = this.surname?.value as string;
     } else {
       this.setState({ surnameValid: true });
-      Forms.fields.surname = '';
+      f.surname = '';
     }
 
     if (Valid.isYear(this.birthday?.value)) {
       this.setState({ dateValid: true });
-      Forms.fields.date = this.birthday?.value as string;
+      f.date = this.birthday?.value as string;
     } else {
       this.setState({ dateValid: false });
-      Forms.fields.date = '';
+      f.date = '';
     }
 
-    Forms.fields.country = this.country?.value as string;
+    f.country = this.country?.value as string;
     if (this.check?.checked) {
       this.setState({ checkValid: true });
-      Forms.fields.check = true;
+      f.check = true;
     } else {
       this.setState({ checkValid: false });
-      Forms.fields.check = false;
+      f.check = false;
     }
 
     if (this.male?.checked) {
-      Forms.fields.gender = 'male';
+      f.gender = 'male';
     } else {
-      Forms.fields.gender = 'female';
+      f.gender = 'female';
     }
 
     if (this.file?.value) {
       this.setState({ fileValid: true });
       const arr = this.file.files;
-      if (arr) Forms.fields.file = URL.createObjectURL(arr[0]);
+      if (arr) f.file = URL.createObjectURL(arr[0]);
     } else {
       this.setState({ fileValid: false });
-      Forms.fields.file = '';
+      f.file = '';
     }
 
-    if (Valid.all(Forms.fields)) {
-      const n = Object.assign({}, Forms.fields);
-      Forms.arr.push(n);
-      console.log(Forms.arr);
+    if (Valid.all(f)) {
+      this.state.arr.push(f);
+      this.cleanForm();
+      this.setState({
+        message: `Create new card: name: ${f.name}, surname: ${f.surname}, birthday: ${f.date}, country: ${f.country}, gender: ${f.gender}`,
+      });
+      this.setState({ messageValid: true });
+      setTimeout(() => {
+        this.setState({ messageValid: false });
+      }, 3000);
     }
     if (event) event.preventDefault();
+    this.setState({ fields: f });
   }
 
-  // addState() {
-  //   this.setState(() => {
-  //     return {
-  //       name: this.name?.value as string,
-  //       surname: this.surname?.value as string,
-  //       date: this.birthday?.value as string,
-  //     };
-  //   });
-  // }
-
-  // addValid() {
-  //   // this.setState(() => {
-  //   //   return {
-  //   //     valid: true,
-  //   //   };
-  //   // });
-  // }
+  cleanForm() {
+    if (this.name) this.name.value = 'John';
+    if (this.surname) this.surname.value = 'Dou';
+    if (this.birthday) this.birthday.value = '1995-01-01';
+    if (this.country) this.country.value = 'Ukraine';
+    if (this.check) this.check.checked = true;
+    if (this.male) this.male.checked = true;
+    if (this.file) this.file.value = '';
+  }
 
   render() {
-    console.log(Forms.fields);
     sessionStorage.setItem('page', 'Forms');
     const headerText = document.querySelector('.headerText');
     if (headerText) headerText.innerHTML = `${sessionStorage.getItem('page')}`;
-    const result = Forms.arr.map((element, index) => {
+    const result = this.state.arr.map((element, index) => {
       return (
         <div className="elem" key={index}>
           <p>
@@ -149,6 +154,7 @@ class Forms extends Component<IProps, IState> {
         </div>
       );
     });
+    const messageClass = this.state.messageValid === true ? 'message' : 'cleanMess';
     const nameClass = this.state.nameValid === true ? 'errMess' : 'errDis';
     const surnameClass = this.state.surnameValid === true ? 'errMess' : 'errDis';
     const dateClass = this.state.dateValid === true ? 'errMess' : 'errDis';
@@ -242,6 +248,7 @@ class Forms extends Component<IProps, IState> {
           <input className="submit" type="submit" value="Отправить" />
         </form>
         <div className="cardsForm">{result}</div>
+        <div className={messageClass}>{this.state.message}</div>
       </div>
     );
   }
