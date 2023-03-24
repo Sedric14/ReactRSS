@@ -3,10 +3,6 @@ import Board from 'components/card';
 import Search from 'components/search';
 
 class Home extends Component {
-  componentDidMount() {
-    const input = document.querySelector('.searchInput') as HTMLInputElement;
-    if (localStorage.getItem('search')) input.value = localStorage.getItem('search') as string;
-  }
   render(): React.ReactNode {
     sessionStorage.setItem('page', 'Home');
     const headerText = document.querySelector('.headerText');

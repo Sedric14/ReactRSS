@@ -3,16 +3,16 @@ import { Link, Route, Routes } from 'react-router-dom';
 import About from 'pages/about';
 import Home from 'pages/home';
 import NotFound from 'pages/notFound';
-import Listeners from './Listeners';
+// import Listeners from './Listeners';
 import Forms from 'pages/forms';
 
 class App extends Component {
-  componentDidMount() {
-    window.addEventListener('load', Listeners.run);
-    const input = document.querySelector('.searchInput') as HTMLInputElement;
-    if (localStorage.getItem('search') && input)
-      input.value = localStorage.getItem('search') as string;
-  }
+  // componentDidMount() {
+  //   window.addEventListener('load', Listeners.run);
+  //   const input = document.querySelector('.searchInput') as HTMLInputElement;
+  //   if (localStorage.getItem('search') && input)
+  //     input.value = localStorage.getItem('search') as string;
+  // }
   render(): React.ReactNode {
     return (
       <>
