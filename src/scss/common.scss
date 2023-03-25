@@ -20,9 +20,13 @@ header{
   z-index: 20;
 
   .headerText{
+    position: absolute;
+    top: 0;
+    right: 200px;
     text-align: right;
     margin-right: 30px;
     color: white;
+    z-index: 25;
   }
 }
 

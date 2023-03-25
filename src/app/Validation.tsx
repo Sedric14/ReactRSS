@@ -7,7 +7,6 @@ export default class Valid {
         return true;
       }
     }
-
     return false;
   }
 
@@ -33,7 +32,27 @@ export default class Valid {
         return true;
       }
     }
+    return false;
+  }
 
+  static isCountry(data: string | undefined) {
+    if (data) {
+      if (data !== 'empty') {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  static isGender(
+    data1: HTMLInputElement | null | undefined,
+    data2: HTMLInputElement | null | undefined
+  ) {
+    if (data1 && data2) {
+      if (data1.checked || data2.checked) {
+        return true;
+      }
+    }
     return false;
   }
 

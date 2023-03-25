@@ -10,9 +10,11 @@ interface IState {
   messageValid: boolean;
   nameValid: boolean;
   surnameValid: boolean;
+  countryValid: boolean;
   dateValid: boolean;
   checkValid: boolean;
   fileValid: boolean;
+  genderValid: boolean;
   arr: FormFields[];
   fields: FormFields;
   message: string;
@@ -44,8 +46,10 @@ class Forms extends Component<IProps, IState> {
       arr: [],
       nameValid: true,
       surnameValid: true,
+      countryValid: true,
       dateValid: true,
       checkValid: true,
+      genderValid: true,
       fileValid: true,
       messageValid: false,
       message: '',
@@ -67,7 +71,7 @@ class Forms extends Component<IProps, IState> {
       this.setState({ surnameValid: true });
       f.surname = this.surname?.value as string;
     } else {
-      this.setState({ surnameValid: true });
+      this.setState({ surnameValid: false });
       f.surname = '';
     }
 
@@ -79,7 +83,13 @@ class Forms extends Component<IProps, IState> {
       f.date = '';
     }
 
-    f.country = this.country?.value as string;
+    if (Valid.isCountry(this.country?.value)) {
+      this.setState({ countryValid: true });
+      f.country = this.country?.value as string;
+    } else {
+      this.setState({ countryValid: false });
+    }
+
     if (this.check?.checked) {
       this.setState({ checkValid: true });
       f.check = true;
@@ -88,10 +98,12 @@ class Forms extends Component<IProps, IState> {
       f.check = false;
     }
 
-    if (this.male?.checked) {
-      f.gender = 'male';
+    if (Valid.isGender(this.male, this.female)) {
+      console.log(this.male?.value);
+      this.setState({ genderValid: true });
+      this.male?.value !== '' ? (f.gender = 'male') : (f.gender = 'female');
     } else {
-      f.gender = 'female';
+      this.setState({ genderValid: false });
     }
 
     if (this.file?.value) {
@@ -122,19 +134,19 @@ class Forms extends Component<IProps, IState> {
     if (this.name) this.name.value = 'John';
     if (this.surname) this.surname.value = 'Dou';
     if (this.birthday) this.birthday.value = '1995-01-01';
-    if (this.country) this.country.value = 'Ukraine';
-    if (this.check) this.check.checked = true;
-    if (this.male) this.male.checked = true;
+    if (this.country) this.country.value = 'empty';
+    if (this.check) this.check.checked = false;
+    if (this.male) this.male.checked = false;
+    if (this.female) this.female.checked = false;
     if (this.file) this.file.value = '';
   }
 
   render() {
     sessionStorage.setItem('page', 'Forms');
-    const headerText = document.querySelector('.headerText');
-    if (headerText) headerText.innerHTML = `${sessionStorage.getItem('page')}`;
     const result = this.state.arr.map((element, index) => {
       return (
         <div className="elem" key={index}>
+          <img className="ava" src={element.file} alt="avatar"></img>
           <p>
             name: <span>{element.name}</span>
           </p>
@@ -150,18 +162,22 @@ class Forms extends Component<IProps, IState> {
           <p>
             gender: <span>{element.gender}</span>
           </p>
-          <img className="ava" src={element.file} alt="avatar"></img>
         </div>
       );
     });
     const messageClass = this.state.messageValid === true ? 'message' : 'cleanMess';
     const nameClass = this.state.nameValid === true ? 'errMess' : 'errDis';
+    const countryClass = this.state.countryValid === true ? 'errMess' : 'errDis';
     const surnameClass = this.state.surnameValid === true ? 'errMess' : 'errDis';
+    const genderClass = this.state.genderValid === true ? 'errMess' : 'errDis';
     const dateClass = this.state.dateValid === true ? 'errMess' : 'errDis';
     const checkClass = this.state.checkValid === true ? 'errMess' : 'errDis';
     const fileClass = this.state.fileValid === true ? 'errMess' : 'errDis';
     return (
       <div>
+        <header>
+          <h2 className="headerText">{sessionStorage.getItem('page')}</h2>
+        </header>
         <h1 className="title">Forms page</h1>
         <form className="form" onSubmit={this.handleSubmit}>
           <label className="label">
@@ -196,19 +212,20 @@ class Forms extends Component<IProps, IState> {
           <p className={dateClass}>Please enter a valid date</p>
           <label className="label">
             Country:
-            <select ref={(input) => (this.country = input)}>
+            <select className="select" ref={(input) => (this.country = input)}>
+              <option value="empty">Choose your country</option>
               <option value="Ukraine">Ukraine</option>
               <option value="Belarus">Belarus</option>
               <option value="Latvia">Latvia</option>
               <option value="Uzbekistan">Uzbekistan</option>
             </select>
           </label>
+          <p className={countryClass}>Please choose your country</p>
           <label className="label">
             I consent to my personal data:
             <input
               className="inputCheckbox"
               type="checkbox"
-              defaultChecked
               ref={(input) => (this.check = input)}
             />
           </label>
@@ -216,7 +233,6 @@ class Forms extends Component<IProps, IState> {
           <label className="label">
             Male:
             <input
-              defaultChecked
               className="inputGender"
               type="radio"
               name="gender"
@@ -234,12 +250,12 @@ class Forms extends Component<IProps, IState> {
               ref={(input) => (this.female = input)}
             />
           </label>
+          <p className={genderClass}>Choose your gender</p>
           <label className="label">
             File:
             <input
               className="inputFile"
               type="file"
-              name="gender"
               accept="image/*"
               ref={(input) => (this.file = input)}
             />
