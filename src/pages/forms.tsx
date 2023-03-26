@@ -1,6 +1,6 @@
 import { FormFields } from 'app/interfaces';
-import Valid from 'app/Validation';
 import React, { Component, FormEventHandler } from 'react';
+import { FormCard } from 'components/formCard';
 
 interface IProps {
   name: string;
@@ -58,8 +58,11 @@ class Forms extends Component<IProps, IState> {
   }
 
   handleSubmit(event: React.FormEvent | undefined) {
+    const date = this.birthday?.value as string;
+    const name = this.name?.value as string;
+    const surname = this.surname?.value as string;
     const f = Object.assign({}, this.state.fields);
-    if (Valid.isName(this.name?.value)) {
+    if (name.length > 2 && name[0].toUpperCase() === name[0]) {
       this.setState({ nameValid: true });
       f.name = this.name?.value as string;
     } else {
@@ -67,7 +70,7 @@ class Forms extends Component<IProps, IState> {
       f.name = '';
     }
 
-    if (Valid.isName(this.surname?.value)) {
+    if (surname.length > 2 && surname[0].toUpperCase() === surname[0]) {
       this.setState({ surnameValid: true });
       f.surname = this.surname?.value as string;
     } else {
@@ -75,7 +78,7 @@ class Forms extends Component<IProps, IState> {
       f.surname = '';
     }
 
-    if (Valid.isYear(this.birthday?.value)) {
+    if (Number(date.slice(0, -6)) < 2023 && Number(date.slice(0, -6)) > 1933) {
       this.setState({ dateValid: true });
       f.date = this.birthday?.value as string;
     } else {
@@ -83,7 +86,7 @@ class Forms extends Component<IProps, IState> {
       f.date = '';
     }
 
-    if (Valid.isCountry(this.country?.value)) {
+    if (this.country?.value !== 'empty') {
       this.setState({ countryValid: true });
       f.country = this.country?.value as string;
     } else {
@@ -98,8 +101,7 @@ class Forms extends Component<IProps, IState> {
       f.check = false;
     }
 
-    if (Valid.isGender(this.male, this.female)) {
-      console.log(this.male?.value);
+    if (this.male?.checked || this.female?.checked) {
       this.setState({ genderValid: true });
       this.male?.checked ? (f.gender = 'male') : (f.gender = 'female');
     } else {
@@ -115,7 +117,15 @@ class Forms extends Component<IProps, IState> {
       f.file = '';
     }
 
-    if (Valid.all(f)) {
+    if (
+      this.state.checkValid &&
+      this.state.countryValid &&
+      this.state.dateValid &&
+      this.state.fileValid &&
+      this.state.genderValid &&
+      this.state.nameValid &&
+      this.state.surnameValid
+    ) {
       this.state.arr.push(f);
       this.cleanForm();
       this.setState({
@@ -144,26 +154,7 @@ class Forms extends Component<IProps, IState> {
   render() {
     sessionStorage.setItem('page', 'Forms');
     const result = this.state.arr.map((element, index) => {
-      return (
-        <div className="elem" key={index}>
-          <img className="ava" src={element.file} alt="avatar"></img>
-          <p>
-            name: <span>{element.name}</span>
-          </p>
-          <p>
-            surname: <span>{element.surname}</span>
-          </p>
-          <p>
-            birthday: <span>{element.date}</span>
-          </p>
-          <p>
-            country: <span>{element.country}</span>
-          </p>
-          <p>
-            gender: <span>{element.gender}</span>
-          </p>
-        </div>
-      );
+      return <FormCard element={element} index={index} key={index} />;
     });
     const messageClass = this.state.messageValid === true ? 'message' : 'cleanMess';
     const nameClass = this.state.nameValid === true ? 'errMess' : 'errDis';
