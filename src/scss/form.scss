@@ -83,8 +83,8 @@
   padding-top: 20px;
 
   .elem {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 220px;
     background: url("https://raw.githubusercontent.com/Sedric14/assets/main/wallpaper.jpg");
     color: #474646;
     margin: 10px;
@@ -105,10 +105,13 @@
        0 -2px 3px 1px black;
     }
 
-    p{color: #ebebeb;}
+    p{
+      margin-bottom: 4px;
+      color: #ebebeb;
+    }
 
     span {
-      color: #c73434;
+      color: #c26c6c;
       font-weight: 600;
       font-size: 120%;
       text-shadow: 0 0 2px black;

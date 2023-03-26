@@ -101,7 +101,7 @@ class Forms extends Component<IProps, IState> {
     if (Valid.isGender(this.male, this.female)) {
       console.log(this.male?.value);
       this.setState({ genderValid: true });
-      this.male?.value !== '' ? (f.gender = 'male') : (f.gender = 'female');
+      this.male?.checked ? (f.gender = 'male') : (f.gender = 'female');
     } else {
       this.setState({ genderValid: false });
     }

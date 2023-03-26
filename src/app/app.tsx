@@ -9,9 +9,6 @@ class App extends Component {
   render(): React.ReactNode {
     return (
       <>
-        {/* <header>
-          <h2 className="headerText">{sessionStorage.getItem('page')}</h2>
-        </header> */}
         <main>
           <aside className="aside">
             <div className="linkHome link">
