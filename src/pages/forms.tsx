@@ -117,25 +117,28 @@ class Forms extends Component<IProps, IState> {
       f.file = '';
     }
 
-    if (
-      this.state.checkValid &&
-      this.state.countryValid &&
-      this.state.dateValid &&
-      this.state.fileValid &&
-      this.state.genderValid &&
-      this.state.nameValid &&
-      this.state.surnameValid
-    ) {
-      this.state.arr.push(f);
-      this.cleanForm();
-      this.setState({
-        message: `Create new card: name: ${f.name}, surname: ${f.surname}, birthday: ${f.date}, country: ${f.country}, gender: ${f.gender}`,
-      });
-      this.setState({ messageValid: true });
-      setTimeout(() => {
-        this.setState({ messageValid: false });
-      }, 3000);
-    }
+    setTimeout(() => {
+      if (
+        this.state.checkValid &&
+        this.state.countryValid &&
+        this.state.dateValid &&
+        this.state.fileValid &&
+        this.state.genderValid &&
+        this.state.nameValid &&
+        this.state.surnameValid
+      ) {
+        this.state.arr.push(f);
+        this.cleanForm();
+        this.setState({
+          message: `Create new card: name: ${f.name}, surname: ${f.surname}, birthday: ${f.date}, country: ${f.country}, gender: ${f.gender}`,
+        });
+        this.setState({ messageValid: true });
+        setTimeout(() => {
+          this.setState({ messageValid: false });
+        }, 3000);
+      }
+    }, 1000);
+
     if (event) event.preventDefault();
     this.setState({ fields: f });
   }
