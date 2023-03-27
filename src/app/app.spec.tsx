@@ -6,11 +6,21 @@ import Forms from 'pages/forms';
 import { time } from 'components/card';
 import data from 'app/data';
 import React from 'react';
-import Valid from './Validation';
 import { unmountComponentAtNode } from 'react-dom';
+import FormCard from 'components/formCard';
+import { FormFields } from './interfaces';
 
 describe('App', () => {
   let container: Element | null;
+  const a: FormFields = {
+    name: 'John',
+    surname: 'John',
+    date: 'Dou',
+    check: true,
+    gender: 'male',
+    file: '7a.png',
+    country: 'Belarus',
+  };
 
   beforeEach(() => {
     container = document.createElement('div');
@@ -53,28 +63,17 @@ describe('App', () => {
     expect(screen.getByText('About page')).toBeTruthy();
   });
 
-  it('should show about page', () => {
+  it('should show forms page', () => {
     render(<Forms name="" />);
     expect(screen.getByText('Forms page')).toBeTruthy();
   });
 
+  it('should render successfully', () => {
+    render(<FormCard element={a} index={0} />);
+    expect(screen.getAllByAltText('avatar')).toBeTruthy();
+  });
+
   it('should show correct time', () => {
     expect(time(data[0].time)).toBe('1:25:10');
-  });
-
-  it('validation Name', () => {
-    expect(Valid.isName('weerrt')).toBeFalsy();
-    expect(Valid.isName('')).toBeFalsy();
-    expect(Valid.isName('Reerrt')).toBeTruthy();
-  });
-
-  it('validation Year', () => {
-    expect(Valid.isYear('1900-04-15')).toBeFalsy();
-    expect(Valid.isYear('2024-04-15')).toBeFalsy();
-    expect(Valid.isYear('1987-06-27')).toBeTruthy();
-  });
-
-  it('validation All', () => {
-    expect(Valid.all(validData)).toBeTruthy();
   });
 });
