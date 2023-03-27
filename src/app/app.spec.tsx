@@ -35,17 +35,6 @@ describe('App', () => {
     }
   });
 
-  const validData = {
-    name: 'John',
-    surname: 'Dou',
-    date: '1995-01-01',
-    check: true,
-    gender: 'male',
-    country: 'Ukraine',
-    file: 'string',
-    valid: true,
-  };
-
   it('should render successfully', () => {
     render(<Card />);
     expect(screen.getAllByAltText('img')).toBeTruthy();

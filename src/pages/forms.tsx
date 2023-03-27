@@ -144,9 +144,9 @@ class Forms extends Component<IProps, IState> {
   }
 
   cleanForm() {
-    if (this.name) this.name.value = 'John';
-    if (this.surname) this.surname.value = 'Dou';
-    if (this.birthday) this.birthday.value = '1995-01-01';
+    if (this.name) this.name.value = '';
+    if (this.surname) this.surname.value = '';
+    if (this.birthday) this.birthday.value = '';
     if (this.country) this.country.value = 'empty';
     if (this.check) this.check.checked = false;
     if (this.male) this.male.checked = false;
@@ -176,32 +176,17 @@ class Forms extends Component<IProps, IState> {
         <form className="form" onSubmit={this.handleSubmit}>
           <label className="label">
             Name:
-            <input
-              className="inputName"
-              defaultValue="John"
-              type="text"
-              ref={(input) => (this.name = input)}
-            />
+            <input className="inputName" type="text" ref={(input) => (this.name = input)} />
           </label>
           <p className={nameClass}>Please enter a valid name</p>
           <label className="label">
             Surname:
-            <input
-              className="inputSurname"
-              defaultValue="Doe"
-              type="text"
-              ref={(input) => (this.surname = input)}
-            />
+            <input className="inputSurname" type="text" ref={(input) => (this.surname = input)} />
           </label>
           <p className={surnameClass}>Please enter a valid surname</p>
           <label className="label">
             Birthday:
-            <input
-              className="inputBirthday"
-              defaultValue="1995-01-01"
-              type="date"
-              ref={(input) => (this.birthday = input)}
-            />
+            <input className="inputBirthday" type="date" ref={(input) => (this.birthday = input)} />
           </label>
           <p className={dateClass}>Please enter a valid date</p>
           <label className="label">
