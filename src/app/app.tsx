@@ -3,7 +3,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import About from 'pages/about';
 import Home from 'pages/home';
 import NotFound from 'pages/notFound';
-import Forms from 'pages/forms';
+import FormPage from 'pages/formsPage';
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/forms" element={<Forms />} />
+            <Route path="/forms" element={<FormPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

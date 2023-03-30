@@ -1,8 +1,9 @@
 import { FormFields } from 'app/interfaces';
 import React, { useRef, useState } from 'react';
 import FormCard from 'components/formCard';
+import Form from 'components/form';
 
-const Forms = () => {
+const FormPage = () => {
   const surname = useRef<HTMLInputElement>(null);
   const name = useRef<HTMLInputElement>(null);
   const birthday = useRef<HTMLInputElement>(null);
@@ -31,13 +32,13 @@ const Forms = () => {
   const fileValid = useRef(true);
   const checkValid = useRef(true);
   const [messageValid, changeMessageValid] = useState<boolean>(true);
-  const [message, changeMessage] = useState<string>('');
 
   function HandleSubmit(event: React.FormEvent | undefined) {
     const date = birthday.current?.value as string;
     const nameStr = name.current?.value as string;
     const surnameStr = surname.current?.value as string;
     const f = Object.assign({}, fields);
+
     if (nameStr.length > 2 && nameStr[0].toUpperCase() === nameStr[0]) {
       nameValid.current = true;
       f.name = name.current?.value as string;
@@ -93,7 +94,6 @@ const Forms = () => {
       f.file = '';
     }
     CreateCard(f);
-
     if (event) event.preventDefault();
     changeFields(f);
   }
@@ -110,9 +110,6 @@ const Forms = () => {
     ) {
       changeArr(arr.concat(f));
       cleanForm();
-      changeMessage(
-        `Create new card: name: ${f.name}, surname: ${f.surname}, birthday: ${f.date}, country: ${f.country}, gender: ${f.gender}`
-      );
       changeMessageValid(true);
       setTimeout(() => {
         changeMessageValid(false);
@@ -135,72 +132,28 @@ const Forms = () => {
   const result = arr.map((element, index) => {
     return <FormCard element={element} index={index} key={index} />;
   });
-  const messageClass = messageValid ? 'message' : 'cleanMess';
-  const nameClass = nameValid.current ? 'errMess' : 'errDis';
-  const countryClass = countryValid.current ? 'errMess' : 'errDis';
-  const surnameClass = surnameValid.current ? 'errMess' : 'errDis';
-  const genderClass = genderValid.current ? 'errMess' : 'errDis';
-  const dateClass = dateValid.current ? 'errMess' : 'errDis';
-  const checkClass = checkValid.current ? 'errMess' : 'errDis';
-  const fileClass = fileValid.current ? 'errMess' : 'errDis';
   return (
-    <div>
-      <header>
-        <h2 className="headerText">{sessionStorage.getItem('page')}</h2>
-      </header>
-      <h1 className="title">Forms page</h1>
-      <form className="form" onSubmit={HandleSubmit}>
-        <label className="label">
-          Name:
-          <input className="inputName" type="text" ref={name} />
-        </label>
-        <p className={nameClass}>Please enter a valid name</p>
-        <label className="label">
-          Surname:
-          <input className="inputSurname" type="text" ref={surname} />
-        </label>
-        <p className={surnameClass}>Please enter a valid surname</p>
-        <label className="label">
-          Birthday:
-          <input className="inputBirthday" type="date" ref={birthday} />
-        </label>
-        <p className={dateClass}>Please enter a valid date</p>
-        <label className="label">
-          Country:
-          <select className="select" ref={country}>
-            <option value="empty">Choose your country</option>
-            <option value="Ukraine">Ukraine</option>
-            <option value="Belarus">Belarus</option>
-            <option value="Latvia">Latvia</option>
-            <option value="Uzbekistan">Uzbekistan</option>
-          </select>
-        </label>
-        <p className={countryClass}>Please choose your country</p>
-        <label className="label">
-          I consent to my personal data:
-          <input className="inputCheckbox" type="checkbox" ref={check} />
-        </label>
-        <p className={checkClass}>Check to submit the form</p>
-        <label className="label">
-          Male:
-          <input className="inputGender" type="radio" name="gender" value="male" ref={male} />
-        </label>
-        <label className="label">
-          Female:
-          <input className="inputGender" type="radio" name="gender" value="female" ref={female} />
-        </label>
-        <p className={genderClass}>Choose your gender</p>
-        <label className="label">
-          File:
-          <input className="inputFile" type="file" accept="image/*" ref={file} />
-        </label>
-        <p className={fileClass}>Choose an image</p>
-        <input className="submit" type="submit" value="Отправить" />
-      </form>
-      <div className="cardsForm">{result}</div>
-      <div className={messageClass}>{message}</div>
-    </div>
+    <Form
+      name={name}
+      surname={surname}
+      birthday={birthday}
+      check={check}
+      male={male}
+      female={female}
+      file={file}
+      country={country}
+      result={result}
+      messageClass={messageValid ? 'message' : 'cleanMess'}
+      nameClass={nameValid.current ? 'errMess' : 'errDis'}
+      countryClass={countryValid.current ? 'errMess' : 'errDis'}
+      surnameClass={surnameValid.current ? 'errMess' : 'errDis'}
+      genderClass={genderValid.current ? 'errMess' : 'errDis'}
+      dateClass={dateValid.current ? 'errMess' : 'errDis'}
+      checkClass={checkValid.current ? 'errMess' : 'errDis'}
+      fileClass={fileValid.current ? 'errMess' : 'errDis'}
+      handle={HandleSubmit}
+    />
   );
 };
 
-export default Forms;
+export default FormPage;
