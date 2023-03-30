@@ -1,24 +1,25 @@
-import React from 'react';
-import { Component, ReactNode } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 
-class Search extends Component {
-  val: HTMLInputElement | null | undefined;
-  componentDidMount(): void {
-    if (localStorage.getItem('search') && this.val) {
-      this.val.value = localStorage.getItem('search') as string;
+const Search = () => {
+  const val = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (localStorage.getItem('search') && val.current) {
+      val.current.value = localStorage.getItem('search') as string;
     }
-  }
-  componentWillUnmount(): void {
-    localStorage.setItem('search', this.val?.value as string);
-  }
-  render(): ReactNode {
-    return (
-      <div className="search">
-        <input inputMode="text" className="searchInput" ref={(input) => (this.val = input)}></input>
-        <button className="btnSearch"></button>
-      </div>
-    );
-  }
-}
+  });
+
+  useLayoutEffect(() => {
+    return () => {
+      localStorage.setItem('search', val.current?.value as string);
+    };
+  });
+
+  return (
+    <div className="search">
+      <input inputMode="text" className="searchInput" ref={val}></input>
+      <button className="btnSearch"></button>
+    </div>
+  );
+};
 
 export default Search;
