@@ -8,7 +8,7 @@ const Form = (props: RefTypes) => {
         <h2 className="headerText">{sessionStorage.getItem('page')}</h2>
       </header>
       <h1 className="title">Forms page</h1>
-      <form className="form" onSubmit={props.handle}>
+      <form className="form" onSubmit={props.handle} data-testid="form">
         <label className="label">
           Name:
           <input className="inputName" type="text" ref={props.name} />

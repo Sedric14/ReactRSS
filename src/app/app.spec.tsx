@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Card from 'components/card';
 import About from 'pages/about';
 import Home from 'pages/home';
-import Forms from 'pages/forms';
+import FormPage from 'pages/formsPage';
 import { time } from 'components/card';
 import data from 'app/data';
 import React from 'react';
@@ -53,7 +53,7 @@ describe('App', () => {
   });
 
   it('should show forms page', () => {
-    render(<Forms name="" />);
+    render(<FormPage />);
     expect(screen.getByText('Forms page')).toBeTruthy();
   });
 
@@ -64,5 +64,14 @@ describe('App', () => {
 
   it('should show correct time', () => {
     expect(time(data[0].time)).toBe('1:25:10');
+  });
+
+  it('should pass validation', () => {
+    render(<FormPage />);
+    fireEvent.input(screen.getByLabelText<HTMLInputElement>('Name:'), {
+      target: { value: 'acv' },
+    });
+    // fireEvent.input(, { target: { value: '24/05/2020' } });
+    expect(fireEvent.submit(screen.getByTestId<HTMLFormElement>('form'))).toBeFalsy();
   });
 });
