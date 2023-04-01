@@ -1,4 +1,5 @@
 import { FormFields } from 'app/interfaces';
+import { Component } from 'react';
 import React from 'react';
 
 export interface IP {
@@ -6,27 +7,29 @@ export interface IP {
   index: number;
 }
 
-const FormCard = (props: IP) => {
-  return (
-    <div className="elem" key={props.index}>
-      <img className="ava" src={props.element.file} alt="avatar"></img>
-      <p>
-        name: <span>{props.element.name}</span>
-      </p>
-      <p>
-        surname: <span>{props.element.surname}</span>
-      </p>
-      <p>
-        birthday: <span>{props.element.date}</span>
-      </p>
-      <p>
-        country: <span>{props.element.country}</span>
-      </p>
-      <p>
-        gender: <span>{props.element.gender}</span>
-      </p>
-    </div>
-  );
-};
+export class FormCard extends Component<IP> {
+  render(): React.ReactNode {
+    return (
+      <div className="elem" key={this.props.index}>
+        <img className="ava" src={this.props.element.file} alt="avatar"></img>
+        <p>
+          name: <span>{this.props.element.name}</span>
+        </p>
+        <p>
+          surname: <span>{this.props.element.surname}</span>
+        </p>
+        <p>
+          birthday: <span>{this.props.element.date}</span>
+        </p>
+        <p>
+          country: <span>{this.props.element.country}</span>
+        </p>
+        <p>
+          gender: <span>{this.props.element.gender}</span>
+        </p>
+      </div>
+    );
+  }
+}
 
 export default FormCard;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Component, ReactNode } from 'react';
 import data from 'app/data';
 import ICard from 'app/interfaces';
 
@@ -7,15 +8,17 @@ interface Props {
   key: number;
 }
 
-const Board = () => {
-  return (
-    <div className="cardsBlock" data-testid="1">
-      {data.map((item) => (
-        <Card value={item} key={item.id} />
-      ))}
-    </div>
-  );
-};
+export class Board extends Component {
+  render(): ReactNode {
+    return (
+      <div className="cardsBlock" data-testid="1">
+        {data.map((item) => (
+          <Card value={item} key={item.id} />
+        ))}
+      </div>
+    );
+  }
+}
 
 const Card = (props: Props) => {
   return (
