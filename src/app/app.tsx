@@ -4,8 +4,9 @@ import About from 'pages/about';
 import Home from 'pages/home';
 import NotFound from 'pages/notFound';
 import FormPage from 'pages/formsPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <main>

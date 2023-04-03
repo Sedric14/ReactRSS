@@ -71,7 +71,6 @@ describe('App', () => {
     fireEvent.input(screen.getByLabelText<HTMLInputElement>('Name:'), {
       target: { value: 'acv' },
     });
-    // fireEvent.input(, { target: { value: '24/05/2020' } });
     expect(fireEvent.submit(screen.getByTestId<HTMLFormElement>('form'))).toBeFalsy();
   });
 });

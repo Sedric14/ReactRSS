@@ -1,3 +1,5 @@
+import { FieldErrors, UseFormRegister, UseFormReset } from 'react-hook-form';
+
 interface ICard {
   id: number;
   img: string;
@@ -19,24 +21,12 @@ export interface FormFields {
 }
 
 export interface RefTypes {
-  name: React.RefObject<HTMLInputElement>;
-  surname: React.RefObject<HTMLInputElement>;
-  birthday: React.RefObject<HTMLInputElement>;
-  check: React.RefObject<HTMLInputElement>;
-  male: React.RefObject<HTMLInputElement>;
-  female: React.RefObject<HTMLInputElement>;
-  file: React.RefObject<HTMLInputElement>;
-  country: React.RefObject<HTMLSelectElement>;
+  errors: FieldErrors<FormFields>;
+  reset: UseFormReset<FormFields>;
+  register: UseFormRegister<FormFields>;
   result: JSX.Element[];
   messageClass: string;
-  nameClass: string;
-  countryClass: string;
-  surnameClass: string;
-  genderClass: string;
-  dateClass: string;
-  checkClass: string;
-  fileClass: string;
-  handle: (event: React.FormEvent | undefined) => void;
+  handle: (event: React.FormEvent<Element> | undefined) => void;
 }
 
 export default ICard;

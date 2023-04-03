@@ -43,7 +43,7 @@
 
   .inputFile{
     margin: 5px;
-    height: 20px;
+    height: 50px;
   }
 
   .submit{
@@ -67,12 +67,19 @@
   }
 
   .errMess{
-    opacity: 0;;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
   }
 
   .errDis{
+    height: 30px;
+    border: none;
+    background-color: #91121200;
     color: #c73434;
     text-shadow: 0 0 2px black;
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -83,7 +90,7 @@
 
   .elem {
     width: 250px;
-    height: 220px;
+    height: 280px;
     background: url("https://raw.githubusercontent.com/Sedric14/assets/main/wallpaper.jpg");
     color: #474646;
     margin: 10px;
