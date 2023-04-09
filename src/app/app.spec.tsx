@@ -11,8 +11,7 @@ import { unmountComponentAtNode } from 'react-dom';
 import FormCard from 'components/formCard';
 import { FormFields } from './interfaces';
 import Card from 'components/card';
-import worker from 'mocks/browser';
-import server from 'mocks/server';
+import Board from 'components/board';
 
 describe('App', () => {
   let container: Element | null;
@@ -85,7 +84,23 @@ describe('App', () => {
     expect(fireEvent.submit(screen.getByTestId<HTMLFormElement>('form'))).toBeFalsy();
   });
 
-  // if (process.env.NODE_ENV === 'development') {
-  //   worker.start();
-  // }
+  it('should render from api', () => {
+    render(<Board props={'nature'} />);
+    expect(screen.getAllByTestId('prel')).toBeTruthy();
+  });
+
+  it('should render from api', () => {
+    render(<Board props={'nature'} />);
+    setTimeout(() => {
+      expect(screen.getAllByTestId('1')).toBeTruthy();
+    }, 1000);
+  });
+
+  it('should render from api', () => {
+    render(<Board props={'nature'} />);
+    setTimeout(() => {
+      fireEvent.click(screen.getByAltText('img'));
+      expect(screen.getByTestId('userName').nodeValue).equal('Vasya');
+    }, 1000);
+  });
 });

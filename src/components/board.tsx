@@ -16,11 +16,6 @@ const Board = (props: A) => {
   const query = localStorage.getItem('search');
   const onClose = () => setModal(false);
 
-  // function setVal(v: PicObjectTypes) {
-  //   setPicValue(v);
-  //   setModal(true);
-  // }
-
   useEffect(() => {
     setIsLoaded(false);
     fetch(
@@ -41,7 +36,7 @@ const Board = (props: A) => {
     return <div className="error">{...items.errors} {statusCode}</div>;
   } else if (!loading || !items) {
     return (
-      <div className="preloadBack">
+      <div className="preloadBack" data-testid="prel">
         <div className="preloadConteiner">
           <span></span>
           <span></span>
@@ -55,6 +50,7 @@ const Board = (props: A) => {
         {items.results.map((item, ind) => (
           <SmallImage
             value={item}
+            data-testid={ind}
             key={ind}
             func={() => {
               setPicValue(item);
