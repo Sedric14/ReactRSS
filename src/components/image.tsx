@@ -7,15 +7,16 @@ interface Props {
   func: React.Dispatch<React.SetStateAction<PicObjectTypes | undefined>>;
 }
 
-const Image = (props: Props) => {
+const SmallImage = (props: Props) => {
   return (
     <img
       className="imgSmall"
       src={props.value.urls.regular}
+      loading="lazy"
       alt="img"
       onClick={() => props.func(props.value)}
     ></img>
   );
 };
 
-export default Image;
+export default SmallImage;

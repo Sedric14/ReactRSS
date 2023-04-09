@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PicObjectTypes, ResultTypes } from 'app/interfaces';
 import Card from './card';
-import Image from './image';
+import SmallImage from './image';
 
 interface A {
   props: string;
@@ -22,7 +22,7 @@ const Board = (props: A) => {
   }
 
   useEffect(() => {
-    setIsLoaded(true);
+    setIsLoaded(false);
     fetch(
       `https://api.unsplash.com/search/photos/?page=1&orientation=landscape&query=${query}&client_id=fQqz6U7P1FNyV9b74t3Yyf19ib3mAawCyd7aNYALAak`
     )
@@ -33,7 +33,6 @@ const Board = (props: A) => {
       })
       .then((result) => {
         setItems(result);
-        console.log(result);
         setIsLoaded(true);
       });
   }, [props]);
@@ -41,12 +40,20 @@ const Board = (props: A) => {
   if (items?.errors) {
     return <div className="error">{...items.errors} {statusCode}</div>;
   } else if (!loading || !items) {
-    return <div className="error"> Loading...</div>;
+    return (
+      <div className="preloadBack">
+        <div className="preloadConteiner">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    );
   } else {
     return (
       <div className="cardsBlock" data-testid="1">
         {items.results.map((item, ind) => (
-          <Image value={item} key={ind} func={() => setVal(item)} />
+          <SmallImage value={item} key={ind} func={() => setVal(item)} />
         ))}
         <Card visible={isModal} onClose={onClose} content={picValue as PicObjectTypes} />
       </div>

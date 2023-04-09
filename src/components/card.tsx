@@ -39,19 +39,24 @@ const Card = ({
   return (
     <div className="wrapper" onClick={onClose}>
       <div className="card" onClick={(e) => e.stopPropagation()}>
-        <img className="imgCard" src={content.urls.regular} alt="img"></img>
         <h2 className="desCard">
           {content.description ? content.description : content.alt_description}
         </h2>
-        <p className="size">
-          Size: {content.width} X {content.height}
-        </p>
-        <p className="userName" data-testid="time">
-          Autor: {content.user.name}
-        </p>
-        <p className="created">Created: {content.created_at.slice(0, -10)}</p>
-        <p className="updated">Updated: {content.updated_at.slice(0, -10)}</p>
-        <p className="tags">Tags: {tags()}</p>
+        <img className="imgCard" src={content.urls.regular} alt="img"></img>
+        <div className="info">
+          <p className="size">
+            Size: {content.width} X {content.height}
+          </p>
+          <p className="userName" data-testid="time">
+            Autor: {content.user.name}
+          </p>
+          <p className="created">Created: {content.created_at.slice(0, -10)}</p>
+          <p className="updated">Updated: {content.updated_at.slice(0, -10)}</p>
+          <p className="tags">Tags: {tags()}</p>
+        </div>
+        <div className="close" onClick={onClose}>
+          ×
+        </div>
       </div>
     </div>
   );
