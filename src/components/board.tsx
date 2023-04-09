@@ -16,10 +16,10 @@ const Board = (props: A) => {
   const query = localStorage.getItem('search');
   const onClose = () => setModal(false);
 
-  function setVal(v: PicObjectTypes) {
-    setPicValue(v);
-    setModal(true);
-  }
+  // function setVal(v: PicObjectTypes) {
+  //   setPicValue(v);
+  //   setModal(true);
+  // }
 
   useEffect(() => {
     setIsLoaded(false);
@@ -53,7 +53,14 @@ const Board = (props: A) => {
     return (
       <div className="cardsBlock" data-testid="1">
         {items.results.map((item, ind) => (
-          <SmallImage value={item} key={ind} func={() => setVal(item)} />
+          <SmallImage
+            value={item}
+            key={ind}
+            func={() => {
+              setPicValue(item);
+              setModal(true);
+            }}
+          />
         ))}
         <Card visible={isModal} onClose={onClose} content={picValue as PicObjectTypes} />
       </div>

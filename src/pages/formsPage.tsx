@@ -12,6 +12,7 @@ const FormPage: React.FC = () => {
     reset,
     formState: { errors },
   } = useForm<FormFields>();
+
   const onSubmit = (data: FormFields) => {
     data.file = sessionStorage.getItem('img') as string;
     changeArr(arr.concat(data));
@@ -26,9 +27,11 @@ const FormPage: React.FC = () => {
   const [messageValid, changeMessageValid] = useState<boolean>(true);
 
   sessionStorage.setItem('page', 'Forms');
+
   const result = arr.map((element, index) => {
     return <FormCard element={element} index={index} key={index} />;
   });
+
   return (
     <Form
       errors={errors}
