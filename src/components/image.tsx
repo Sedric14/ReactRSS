@@ -11,7 +11,7 @@ const SmallImage = (props: Props) => {
   return (
     <img
       className="imgSmall"
-      src={props.value.urls.regular}
+      src={props.value.urls.small}
       loading="lazy"
       alt="img"
       onClick={() => props.func(props.value)}
