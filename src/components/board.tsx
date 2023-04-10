@@ -44,6 +44,12 @@ const Board = (props: A) => {
         </div>
       </div>
     );
+  } else if (items.total === 0) {
+    return (
+      <div className="wrapNoth">
+        <div className="nothing">Nothing was found according to your request.</div>
+      </div>
+    );
   } else {
     return (
       <div className="cardsBlock" data-testid="1">

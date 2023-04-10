@@ -47,7 +47,7 @@ const Card = ({
           <p className="size">
             Size: {content.width} X {content.height}
           </p>
-          <p className="userName" data-testid="time">
+          <p className="userName" data-testid="userName">
             Autor: {content.user.name}
           </p>
           <p className="created">Created: {content.created_at.slice(0, -10)}</p>
