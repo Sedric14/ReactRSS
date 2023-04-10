@@ -1,0 +1,91 @@
+.preloadBack {
+	width: 100vw;
+	height: 100vh;
+  background-color: #0000007c;
+
+  .preloadConteiner{
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    top: calc(50vh - 100px);
+    left: calc(50vw - 100px);
+
+    & span {
+		display: block;
+		border-radius: 50%;
+		border: 12px solid #fff;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+
+		&:first-child {
+			width: 200px;
+			height: 200px;
+			border-color: rgba(25,190,155,1);
+			border-left-color: transparent;
+			top: 0;
+			left: 0;
+			animation: effect1 4s infinite linear;
+		}
+
+		&:nth-child(2) {
+			width: 150px;
+			height: 150px;
+			border-color: rgba(230,75,60,1);
+			border-right-color: transparent;
+			top: 12.5%;
+			left: 12.5%;
+			animation: effect2 3s infinite linear;
+		}
+
+		&:last-child {
+			width: 100px;
+			height: 100px;
+			border-color: rgb(15, 98, 199);
+			border-bottom-color: transparent;
+			top: 25%;
+			left: 25%;
+			animation: effect1 4s infinite linear;
+		}
+	}
+}
+
+@-webkit-keyframes effect1 { 
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes effect1 {
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes effect2 { 
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(-360deg);
+	}
+}
+
+@keyframes effect2 {
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(-360deg);
+	}
+  }
+
+	
+}

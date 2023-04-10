@@ -1,14 +1,5 @@
 import { FieldErrors, UseFormRegister, UseFormReset } from 'react-hook-form';
 
-interface ICard {
-  id: number;
-  img: string;
-  name: string;
-  desc: string;
-  time: number;
-  link: string;
-}
-
 export interface FormFields {
   name: string;
   surname: string;
@@ -29,4 +20,36 @@ export interface RefTypes {
   handle: (event: React.FormEvent<Element> | undefined) => void;
 }
 
-export default ICard;
+export interface ResultTypes {
+  errors?: string[];
+  total: number;
+  total_pages: number;
+  results: PicObjectTypes[];
+}
+
+export interface PicObjectTypes {
+  alt_description: string;
+  created_at: string;
+  description: string;
+  height: number;
+  width: number;
+  tags: { title: string }[];
+  updated_at: string;
+  user: { name: string };
+  urls: UrlsTypes;
+}
+
+export interface UrlsTypes {
+  full: string;
+  raw: string;
+  regular: string;
+  small: string;
+  small_s3: string;
+  thumb: string;
+}
+
+export interface ModalProps {
+  visible: boolean;
+  content: PicObjectTypes;
+  onClose: () => void;
+}

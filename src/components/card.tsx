@@ -1,52 +1,65 @@
+import { ModalProps } from 'app/interfaces';
 import React from 'react';
-import data from 'app/data';
-import ICard from 'app/interfaces';
+import { useEffect } from 'react';
 
-interface Props {
-  value: ICard;
-  key: number;
-}
+const Card = ({
+  visible = false,
+  content = {
+    alt_description: '',
+    created_at: '',
+    description: '',
+    height: 0,
+    width: 0,
+    tags: [],
+    updated_at: '',
+    user: { name: '' },
+    urls: { full: '', raw: '', regular: '', small: '', small_s3: '', thumb: '' },
+  },
+  onClose,
+}: ModalProps) => {
+  const onKeydown = ({ key }: KeyboardEvent) => {
+    if (key === 'Escape') onClose();
+  };
 
-const Board = () => {
-  return (
-    <div className="cardsBlock" data-testid="1">
-      {data.map((item) => (
-        <Card value={item} key={item.id} />
-      ))}
-    </div>
-  );
-};
+  useEffect(() => {
+    document.addEventListener('keydown', onKeydown);
+    return () => document.removeEventListener('keydown', onKeydown);
+  });
 
-const Card = (props: Props) => {
-  return (
-    <div className="card">
-      <img className="imgCard" src={props.value.img} alt="img"></img>
-      <h2 className="nameCard">
-        {props.value.name}
-        <a href={props.value.link} target="_blank" className="linkCard" rel="noreferrer">
-          ᐅ
-        </a>
-      </h2>
-      <p className="descCard">{props.value.desc}</p>
-      <p className="timeCard" data-testid="time">
-        {time(props.value.time)}
-      </p>
-    </div>
-  );
-};
+  if (!visible) return null;
 
-export function time(t: number) {
-  let str: string;
-  const hours = Math.floor(t / 3600);
-  let minutes = Math.floor(t / 60);
-  if (minutes > 60) minutes = minutes % 60;
-  const seconds = t % 60;
-  if (hours > 0) {
-    str = `${hours}:${minutes}:${seconds}`;
-  } else {
-    str = `${minutes}:${seconds}`;
+  function tags() {
+    let str = '';
+    content.tags.map((i) => {
+      return (str += ` #${i.title}`);
+    });
+    return str;
   }
-  return str;
-}
 
-export default Board;
+  return (
+    <div className="wrapper" onClick={onClose}>
+      <div className="card" onClick={(e) => e.stopPropagation()}>
+        <h2 className="desCard">
+          {content.description ? content.description : content.alt_description}
+        </h2>
+        <img className="imgCard" src={content.urls.regular} alt="img"></img>
+        <div className="info">
+          <p className="size">
+            Size: {content.width} X {content.height}
+          </p>
+          <p className="userName" data-testid="userName">
+            Autor: {content.user.name}
+          </p>
+          <p className="created">Created: {content.created_at.slice(0, -10)}</p>
+          <p className="updated">Updated: {content.updated_at.slice(0, -10)}</p>
+          <p className="tags">Tags: {tags()}</p>
+        </div>
+        <div className="close" onClick={onClose}>
+          ×
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Card;

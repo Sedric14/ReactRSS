@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { fireEvent, render, screen } from '@testing-library/react';
-import Card from 'components/card';
+import { afterEach, describe, expect, it } from 'vitest';
 import About from 'pages/about';
+import picObj from 'app/data';
 import Home from 'pages/home';
+import SmallImage from 'components/image';
 import FormPage from 'pages/formsPage';
-import { time } from 'components/card';
-import data from 'app/data';
 import React from 'react';
 import { unmountComponentAtNode } from 'react-dom';
 import FormCard from 'components/formCard';
 import { FormFields } from './interfaces';
+import Card from 'components/card';
+import Board from 'components/board';
 
 describe('App', () => {
   let container: Element | null;
@@ -36,15 +39,26 @@ describe('App', () => {
   });
 
   it('should render successfully', () => {
-    render(<Card />);
+    render(<SmallImage value={picObj} key={1} func={() => {}} />);
     expect(screen.getAllByAltText('img')).toBeTruthy();
-    expect(screen.getAllByText('Смешарики. ДежаВю')).toBeTruthy();
   });
 
   it('should have a list cards', () => {
     render(<Home />);
-    expect(screen.getAllByTestId('1')).toBeTruthy();
     expect(screen.getByText('Home page'));
+  });
+
+  it('shold render modal window', () => {
+    render(
+      <Card
+        visible={true}
+        content={picObj}
+        onClose={function (): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
+    );
+    expect(screen.getAllByText('description')).toBeTruthy();
   });
 
   it('should show about page', () => {
@@ -62,15 +76,31 @@ describe('App', () => {
     expect(screen.getAllByAltText('avatar')).toBeTruthy();
   });
 
-  it('should show correct time', () => {
-    expect(time(data[0].time)).toBe('1:25:10');
-  });
-
   it('should pass validation', () => {
     render(<FormPage />);
     fireEvent.input(screen.getByLabelText<HTMLInputElement>('Name:'), {
       target: { value: 'acv' },
     });
     expect(fireEvent.submit(screen.getByTestId<HTMLFormElement>('form'))).toBeFalsy();
+  });
+
+  it('should render from api', () => {
+    render(<Board props={'nature'} />);
+    expect(screen.getAllByTestId('prel')).toBeTruthy();
+  });
+
+  it('should render from api', () => {
+    render(<Board props={'nature'} />);
+    setTimeout(() => {
+      expect(screen.getAllByTestId('1')).toBeTruthy();
+    }, 1000);
+  });
+
+  it('should render from api', () => {
+    render(<Board props={'nature'} />);
+    setTimeout(() => {
+      fireEvent.click(screen.getByAltText('img'));
+      expect(screen.getByTestId('userName').nodeValue).equal('Vasya');
+    }, 1000);
   });
 });
