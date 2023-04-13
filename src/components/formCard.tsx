@@ -7,6 +7,8 @@ export interface IP {
 }
 
 const FormCard = (props: IP) => {
+  console.log((sessionStorage.getItem('img') as string)?.slice(5));
+  // const url = URL.createObjectURL(props.element.file);
   return (
     <div className="elem" key={props.index}>
       <img className="ava" src={props.element.file} alt="avatar"></img>
