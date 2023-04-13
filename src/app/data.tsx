@@ -26,4 +26,16 @@ export const resType: ResultTypes = {
   results: [picObj, picObj, picObj],
 };
 
+export const emptyModalCard: PicObjectTypes = {
+  alt_description: '',
+  created_at: '',
+  description: '',
+  height: 0,
+  width: 0,
+  tags: [],
+  updated_at: '',
+  user: { name: '' },
+  urls: { full: '', raw: '', regular: '', small: '', small_s3: '', thumb: '' },
+};
+
 export default picObj;

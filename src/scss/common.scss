@@ -31,13 +31,18 @@ header{
   }
 }
 
+.base{
+  position: relative;
+  left: 200px;
+  max-width: calc(100vw - 200px);
+}
 
 .aside{
-  position: sticky;
+  position: fixed;
   display: flex;
   flex-direction: column;
   min-width: 200px;
-  height: 100vw;
+  height: 100vh;
   background-color: #0e0e0e;
 
   .link{

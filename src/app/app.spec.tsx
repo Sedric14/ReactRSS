@@ -12,6 +12,8 @@ import { unmountComponentAtNode } from 'react-dom';
 // import { FormFields } from './interfaces';
 import Card from 'components/card';
 import Board from 'components/board';
+import { Provider } from 'react-redux';
+import store from '../app/store';
 
 describe('App', () => {
   let container: Element | null;
@@ -44,7 +46,11 @@ describe('App', () => {
   });
 
   it('should have a list cards', () => {
-    render(<Home />);
+    render(
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    );
     expect(screen.getByText('Home page'));
   });
 
@@ -67,7 +73,11 @@ describe('App', () => {
   });
 
   it('should show forms page', () => {
-    render(<FormPage />);
+    render(
+      <Provider store={store}>
+        <FormPage />
+      </Provider>
+    );
     expect(screen.getByText('Forms page')).toBeTruthy();
   });
 
@@ -77,7 +87,11 @@ describe('App', () => {
   // });
 
   it('should pass validation', () => {
-    render(<FormPage />);
+    render(
+      <Provider store={store}>
+        <FormPage />
+      </Provider>
+    );
     fireEvent.input(screen.getByLabelText<HTMLInputElement>('Name:'), {
       target: { value: 'acv' },
     });
@@ -85,22 +99,46 @@ describe('App', () => {
   });
 
   it('should render from api', () => {
-    render(<Board props={'nature'} />);
+    render(
+      <Provider store={store}>
+        <Board />
+      </Provider>
+    );
     expect(screen.getAllByTestId('prel')).toBeTruthy();
   });
 
   it('should render from api', () => {
-    render(<Board props={'nature'} />);
+    render(
+      <Provider store={store}>
+        <Board />
+      </Provider>
+    );
     setTimeout(() => {
       expect(screen.getAllByTestId('1')).toBeTruthy();
     }, 1000);
   });
 
   it('should render from api', () => {
-    render(<Board props={'nature'} />);
+    render(
+      <Provider store={store}>
+        <Board />
+      </Provider>
+    );
     setTimeout(() => {
       fireEvent.click(screen.getByAltText('img'));
       expect(screen.getByTestId('userName').nodeValue).equal('Vasya');
+    }, 1000);
+  });
+  it('should show not found', () => {
+    render(
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    );
+    setTimeout(() => {
+      fireEvent.input(screen.getByTestId('search'), '');
+      fireEvent.click(screen.getByTestId('sendSearch'));
+      expect(screen.getByTestId('empty')).toBeTruthy();
     }, 1000);
   });
 });
