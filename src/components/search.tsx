@@ -1,10 +1,15 @@
+import { IRootState } from 'app/store';
 import { saveValue } from 'feauters/saveSearchSlice';
 import React, { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Search = () => {
   const dispatch = useDispatch();
   const val = useRef<HTMLInputElement>(null);
+  const old = useSelector((state: IRootState) => state.saveSearch);
+  // if () {
+  //   if (old.value === '' && val.current) old.value = 
+  // }
 
   const handleChange = () => {
     dispatch(saveValue(val.current?.value));
@@ -21,8 +26,8 @@ const Search = () => {
       <input
         inputMode="text"
         data-testid={'search'}
+        defaultValue={old.value}
         className="searchInput"
-        defaultValue={'nature'}
         ref={val}
         onKeyDown={enterKD}
       ></input>

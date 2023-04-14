@@ -1,4 +1,4 @@
-import { PicObjectTypes, ResultTypes } from './interfaces';
+import { FormFields, PicObjectTypes, ResultTypes } from './interfaces';
 
 const picObj: PicObjectTypes = {
   alt_description: 'alt_description',
@@ -36,6 +36,16 @@ export const emptyModalCard: PicObjectTypes = {
   updated_at: '',
   user: { name: '' },
   urls: { full: '', raw: '', regular: '', small: '', small_s3: '', thumb: '' },
+};
+
+export const entered: FormFields = {
+  name: 'John',
+  surname: 'John',
+  date: 'Dou',
+  check: true,
+  gender: 'male',
+  file: 'https://images.unsplash.com/photo-1461988320302-91bde64fc8e4?ixid=2yJhcHBfaWQiOjEyMDd9&fm=jpg&fit=crop&w=1080&q=80&fit=max',
+  country: 'Belarus',
 };
 
 export default picObj;

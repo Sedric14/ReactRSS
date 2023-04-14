@@ -3,7 +3,7 @@ import { IRootState } from 'app/store';
 
 const saveSlice = createSlice({
   name: 'saveSearch',
-  initialState: { value: '' },
+  initialState: { value: 'nature' },
   reducers: {
     saveValue: (state, action) => {
       return { ...state, value: action.payload };

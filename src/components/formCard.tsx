@@ -8,7 +8,7 @@ export interface IP {
 
 const FormCard = (props: IP) => {
   return (
-    <div className="elem" key={props.index}>
+    <div className="elem" key={props.index} data-testid={'entered'}>
       <img className="ava" src={props.element.file} alt="avatar"></img>
       <p>
         name: <span>{props.element.name}</span>
