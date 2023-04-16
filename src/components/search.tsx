@@ -7,9 +7,6 @@ const Search = () => {
   const dispatch = useDispatch();
   const val = useRef<HTMLInputElement>(null);
   const old = useSelector((state: IRootState) => state.saveSearch);
-  // if () {
-  //   if (old.value === '' && val.current) old.value = 
-  // }
 
   const handleChange = () => {
     dispatch(saveValue(val.current?.value));

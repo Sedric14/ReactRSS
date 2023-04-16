@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { fireEvent, render, screen } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it } from 'vitest';
 import About from 'pages/about';
 import picObj, { entered } from 'app/data';
