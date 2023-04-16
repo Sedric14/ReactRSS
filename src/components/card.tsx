@@ -1,22 +1,9 @@
+import { emptyModalCard } from 'app/data';
 import { ModalProps } from 'app/interfaces';
 import React from 'react';
 import { useEffect } from 'react';
 
-const Card = ({
-  visible = false,
-  content = {
-    alt_description: '',
-    created_at: '',
-    description: '',
-    height: 0,
-    width: 0,
-    tags: [],
-    updated_at: '',
-    user: { name: '' },
-    urls: { full: '', raw: '', regular: '', small: '', small_s3: '', thumb: '' },
-  },
-  onClose,
-}: ModalProps) => {
+const Card = ({ visible = false, content = emptyModalCard, onClose }: ModalProps) => {
   const onKeydown = ({ key }: KeyboardEvent) => {
     if (key === 'Escape') onClose();
   };

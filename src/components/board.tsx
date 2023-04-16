@@ -1,73 +1,52 @@
-import React, { useEffect, useState } from 'react';
-import { PicObjectTypes, ResultTypes } from 'app/interfaces';
+import React, { useState } from 'react';
+import { PicObjectTypes } from 'app/interfaces';
 import Card from './card';
 import SmallImage from './image';
+import { useSelector } from 'react-redux';
+import { SelectSave } from 'feauters/saveSearchSlice';
+import { useGetPostsQuery } from '../feauters/apiSlice';
+import Spinner from './spinner';
 
-interface A {
-  props: string;
-}
-
-const Board = (props: A) => {
+const Board = () => {
   const [isModal, setModal] = React.useState(false);
-  const [statusCode, setStatusCode] = useState(0);
-  const [loading, setIsLoaded] = useState(false);
-  const [items, setItems] = useState<ResultTypes>();
   const [picValue, setPicValue] = useState<PicObjectTypes>();
-  const query = localStorage.getItem('search');
+  const query = useSelector(SelectSave).value;
   const onClose = () => setModal(false);
 
-  useEffect(() => {
-    setIsLoaded(false);
-    fetch(
-      `https://api.unsplash.com/search/photos/?page=1&orientation=landscape&query=${query}&client_id=fQqz6U7P1FNyV9b74t3Yyf19ib3mAawCyd7aNYALAak`
-    )
-      .then((res) => {
-        const resp = res.json();
-        setStatusCode(res.status);
-        return resp as unknown as ResultTypes;
-      })
-      .then((result) => {
-        setItems(result);
-        setIsLoaded(true);
-      });
-  }, [props]);
+  const { data: posts, isLoading, isSuccess, isError, error } = useGetPostsQuery(query);
 
-  if (items?.errors) {
-    return <div className="error">{...items.errors} {statusCode}</div>;
-  } else if (!loading || !items) {
-    return (
-      <div className="preloadBack" data-testid="prel">
-        <div className="preloadConteiner">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    );
-  } else if (items.total === 0) {
-    return (
-      <div className="wrapNoth">
+  let content;
+
+  if (isLoading) {
+    content = <Spinner />;
+  } else if (posts?.results.length === 0) {
+    content = (
+      <div className="wrapNoth" data-testid={'empty'}>
         <div className="nothing">Nothing was found according to your request.</div>
       </div>
     );
-  } else {
-    return (
-      <div className="cardsBlock" data-testid="1">
-        {items.results.map((item, ind) => (
-          <SmallImage
-            value={item}
-            data-testid={ind}
-            key={ind}
-            func={() => {
-              setPicValue(item);
-              setModal(true);
-            }}
-          />
-        ))}
-        <Card visible={isModal} onClose={onClose} content={picValue as PicObjectTypes} />
-      </div>
-    );
+  } else if (isSuccess) {
+    content = posts.results.map((post, ind) => (
+      <SmallImage
+        value={post}
+        data-testid={ind}
+        key={ind}
+        func={() => {
+          setPicValue(post);
+          setModal(true);
+        }}
+      />
+    ));
+  } else if (isError) {
+    content = <div>{error.toString()}</div>;
   }
+
+  return (
+    <div className="cardsBlock" data-testid="1">
+      {content}
+      <Card visible={isModal} onClose={onClose} content={picValue as PicObjectTypes} />
+    </div>
+  );
 };
 
 export default Board;

@@ -2,28 +2,21 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import About from 'pages/about';
-import picObj from 'app/data';
+import picObj, { entered } from 'app/data';
 import Home from 'pages/home';
 import SmallImage from 'components/image';
 import FormPage from 'pages/formsPage';
 import React from 'react';
 import { unmountComponentAtNode } from 'react-dom';
-import FormCard from 'components/formCard';
-import { FormFields } from './interfaces';
 import Card from 'components/card';
 import Board from 'components/board';
+import { Provider } from 'react-redux';
+import store from '../app/store';
+import FormCard from 'components/formCard';
+import NotFound from 'pages/notFound';
 
 describe('App', () => {
   let container: Element | null;
-  const a: FormFields = {
-    name: 'John',
-    surname: 'John',
-    date: 'Dou',
-    check: true,
-    gender: 'male',
-    file: '7a.png',
-    country: 'Belarus',
-  };
 
   beforeEach(() => {
     container = document.createElement('div');
@@ -44,7 +37,11 @@ describe('App', () => {
   });
 
   it('should have a list cards', () => {
-    render(<Home />);
+    render(
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    );
     expect(screen.getByText('Home page'));
   });
 
@@ -67,17 +64,20 @@ describe('App', () => {
   });
 
   it('should show forms page', () => {
-    render(<FormPage />);
+    render(
+      <Provider store={store}>
+        <FormPage />
+      </Provider>
+    );
     expect(screen.getByText('Forms page')).toBeTruthy();
   });
 
-  it('should render successfully', () => {
-    render(<FormCard element={a} index={0} />);
-    expect(screen.getAllByAltText('avatar')).toBeTruthy();
-  });
-
   it('should pass validation', () => {
-    render(<FormPage />);
+    render(
+      <Provider store={store}>
+        <FormPage />
+      </Provider>
+    );
     fireEvent.input(screen.getByLabelText<HTMLInputElement>('Name:'), {
       target: { value: 'acv' },
     });
@@ -85,22 +85,60 @@ describe('App', () => {
   });
 
   it('should render from api', () => {
-    render(<Board props={'nature'} />);
+    render(
+      <Provider store={store}>
+        <Board />
+      </Provider>
+    );
     expect(screen.getAllByTestId('prel')).toBeTruthy();
   });
 
   it('should render from api', () => {
-    render(<Board props={'nature'} />);
+    render(
+      <Provider store={store}>
+        <Board />
+      </Provider>
+    );
     setTimeout(() => {
       expect(screen.getAllByTestId('1')).toBeTruthy();
     }, 1000);
   });
 
   it('should render from api', () => {
-    render(<Board props={'nature'} />);
+    render(
+      <Provider store={store}>
+        <Board />
+      </Provider>
+    );
     setTimeout(() => {
       fireEvent.click(screen.getByAltText('img'));
       expect(screen.getByTestId('userName').nodeValue).equal('Vasya');
     }, 1000);
+  });
+  it('should show not found', () => {
+    render(
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    );
+    setTimeout(() => {
+      fireEvent.input(screen.getByTestId('search'), 'car');
+      fireEvent.click(screen.getByTestId('sendSearch'));
+      expect(screen.getByTestId('empty')).toBeTruthy();
+    }, 1000);
+  });
+
+  it('should render card', () => {
+    render(
+      <Provider store={store}>
+        <FormCard element={entered} index={0} />
+      </Provider>
+    );
+    expect(screen.getByTestId('entered')).toBeTruthy();
+  });
+
+  it('should render notFound', () => {
+    render(<NotFound />);
+    expect(screen.getByText('Not Found')).toBeTruthy();
   });
 });

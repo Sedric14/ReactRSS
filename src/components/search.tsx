@@ -1,41 +1,34 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import { IRootState } from 'app/store';
+import { saveValue } from 'feauters/saveSearchSlice';
+import React, { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-interface PrTypes {
-  fun: (str: string) => void;
-}
-
-const Search = (fun: PrTypes) => {
+const Search = () => {
+  const dispatch = useDispatch();
   const val = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    if (localStorage.getItem('search') && val?.current) {
-      val.current.value = localStorage.getItem('search') as string;
-    }
-  });
-
-  useLayoutEffect(() => {
-    return () => {
-      localStorage.setItem('search', val.current?.value as string);
-    };
-  });
+  const old = useSelector((state: IRootState) => state.saveSearch);
 
   const handleChange = () => {
-    localStorage.setItem('search', val.current?.value as string);
-    if (val.current) val.current.value = localStorage.getItem('search') as string;
-    fun.fun(localStorage.getItem('search') as string);
+    dispatch(saveValue(val.current?.value));
   };
 
   const enterKD = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      localStorage.setItem('search', val.current?.value as string);
-      if (val.current) val.current.value = localStorage.getItem('search') as string;
-      fun.fun(localStorage.getItem('search') as string);
+      dispatch(saveValue(val.current?.value));
     }
   };
 
   return (
     <div className="search">
-      <input inputMode="text" className="searchInput" ref={val} onKeyDown={enterKD}></input>
-      <button className="btnSearch" onClick={handleChange}></button>
+      <input
+        inputMode="text"
+        data-testid={'search'}
+        defaultValue={old.value}
+        className="searchInput"
+        ref={val}
+        onKeyDown={enterKD}
+      ></input>
+      <button className="btnSearch" onClick={handleChange} data-testid={'sendSearch'}></button>
     </div>
   );
 };

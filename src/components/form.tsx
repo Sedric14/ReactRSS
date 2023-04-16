@@ -157,8 +157,8 @@ const Form = (props: RefTypes) => {
             })}
             onChange={(e) => {
               if (props.errors.file) props.errors.file.message = '';
-              if (e.target?.files?.[0]) {
-                sessionStorage.setItem('img', URL.createObjectURL(e.target?.files?.[0]));
+              if (e.target?.files) {
+                sessionStorage.setItem('img', URL.createObjectURL(e.target?.files[0]));
               }
             }}
           />
