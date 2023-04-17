@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { PicObjectTypes } from 'app/interfaces';
+import { PicObjectTypes } from '../app/interfaces';
 import Card from './card';
 import SmallImage from './image';
 import { useSelector } from 'react-redux';
-import { SelectSave } from 'feauters/saveSearchSlice';
+import { SelectSave } from '../feauters/saveSearchSlice';
 import { useGetPostsQuery } from '../feauters/apiSlice';
 import Spinner from './spinner';
 

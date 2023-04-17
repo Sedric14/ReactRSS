@@ -1,4 +1,4 @@
-import { PicObjectTypes } from 'app/interfaces';
+import { PicObjectTypes } from '../app/interfaces';
 import React from 'react';
 
 interface Props {

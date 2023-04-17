@@ -1,4 +1,4 @@
-import { RefTypes } from 'app/interfaces';
+import { RefTypes } from '../app/interfaces';
 import React from 'react';
 
 const Form = (props: RefTypes) => {

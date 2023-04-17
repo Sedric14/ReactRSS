@@ -1,6 +1,6 @@
 import React from 'react';
-import Board from 'components/board';
-import Search from 'components/search';
+import Board from '../components/board';
+import Search from '../components/search';
 
 const Home = () => {
   sessionStorage.setItem('page', 'Home');

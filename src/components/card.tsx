@@ -1,5 +1,5 @@
-import { emptyModalCard } from 'app/data';
-import { ModalProps } from 'app/interfaces';
+import { emptyModalCard } from '../app/data';
+import { ModalProps } from '../app/interfaces';
 import React from 'react';
 import { useEffect } from 'react';
 
