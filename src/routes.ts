@@ -11,6 +11,11 @@ export interface RouteSchema {
 
 export const ROUTES: RouteSchema[] = [
   {
+    key: 'forms',
+    path: '/forms',
+    component: FormPage,
+  },
+  {
     key: 'about',
     path: '/about',
     component: About,
@@ -21,13 +26,8 @@ export const ROUTES: RouteSchema[] = [
     component: Home,
   },
   {
-    key: 'main',
+    key: 'notfound',
     path: '*',
     component: NotFound,
-  },
-  {
-    key: 'forms',
-    path: '/forms',
-    component: FormPage,
   },
 ];

@@ -7,7 +7,7 @@ import { StaticRouter } from 'react-router';
 import { createStore } from 'redux';
 
 import { renderApp } from './main';
-import { fetchDataByUrl } from './data/fetchDataByUrl';
+// import { fetchDataByUrl } from './data/fetchDataByUrl';
 import { renderTemplate } from './renderTemplate';
 import store from 'app/store';
 import App from 'app/app';
@@ -54,7 +54,7 @@ app.get('*', async (req, res) => {
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>
-        <App />
+        {renderApp}
       </StaticRouter>
     </Provider>
   );
@@ -63,7 +63,7 @@ app.get('*', async (req, res) => {
     renderTemplate({
       cssPath: 'styles.css',
       jsPath: 'main.js',
-      content,
+      content: content,
       // data: JSON.stringify(data),
     })
   );

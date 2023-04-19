@@ -11,6 +11,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import { cardAdded } from '../feauters/formSlice';
 
 const FormPage: React.FC = () => {
+  console.log('forms');
   const {
     register,
     handleSubmit,

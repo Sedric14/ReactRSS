@@ -1,5 +1,5 @@
 import { match, matchPath } from 'react-router';
-import { ROUTES } from '../routes';
+// import { ROUTES } from '../routes';
 
 const DATA_DICTIONARY: Record<string, (route: match) => Promise<any>> = {
   user(route) {
@@ -16,23 +16,25 @@ const DATA_DICTIONARY: Record<string, (route: match) => Promise<any>> = {
   },
 };
 
-export function fetchDataByUrl(url: string): Promise<any> {
-  let route: match;
+// export function fetchDataByUrl(url: string): Promise<any> {
+//   let route = matchPath(url, '');
 
-  const routeConfig = ROUTES.find(({ path }) => {
-    const matchedRoute = matchPath(url, path);
+//   const routeConfig = ROUTES.find(({ path }) => {
+//     const matchedRoute = matchPath(url, path);
 
-    if (matchedRoute) {
-      route = matchedRoute;
-      return true;
-    }
+//     if (matchedRoute) {
+//       route = matchedRoute;
+//       return true;
+//     }
 
-    return false;
-  });
+//     return false;
+//   });
 
-  // if (route && DATA_DICTIONARY[routeConfig.key]) {
-  //   return DATA_DICTIONARY[routeConfig.key](route);
-  // }
+//   if (routeConfig) {
+//     if (route && DATA_DICTIONARY[routeConfig.key]) {
+//       return DATA_DICTIONARY[routeConfig.key](route);
+//     }
+//   }
 
-  return Promise.resolve({});
-}
+//   return Promise.resolve({});
+// }
