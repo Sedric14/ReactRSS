@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // const nodeExternals = require('webpack-node-externals');
 const config = require('./webpack.common').createConfig({
   target: 'server',
@@ -24,12 +25,19 @@ module.exports = {
   // node: {
   //   __dirname: false,
   // },
+  externals: {
+    'express': 'commonjs express',
+    'react': 'commonjs react',
+    'react-dom/server': 'commonjs react-dom/server',
+    'react-router': 'commonjs react-router',
+    'react-router-dom': 'commonjs react-router-dom'
+  },
   module: {
     ...config.module,
     rules: [
       ...config.module.rules,
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/i,
         use: 'null-loader',
         // loader: 'ts-loader',
         // options: {

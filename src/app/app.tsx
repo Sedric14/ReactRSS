@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import About from '../pages/about';
 import Home from '../pages/home';
 import NotFound from '../pages/notFound';
@@ -21,12 +21,12 @@ const App: React.FC = () => {
           </div>
         </aside>
         <div className="base">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/forms" element={<FormPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/forms" component={FormPage} />
+            <Route path="*" component={NotFound} />
+          </Switch>
         </div>
       </main>
       <footer className="footer">Copyright 2023</footer>

@@ -23,17 +23,5 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "resolveJsonModule": true
-  },
-  "files": [],
-  "include": ["client", "server"],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ],
-  "compileOnSave": false,
-  "exclude": ["node_modules", "tmp"]
+  }
 }

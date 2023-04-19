@@ -21,7 +21,7 @@ const FormPage: React.FC = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data: FormFields) => {
-    data.file = sessionStorage.getItem('img') as string;
+    // data.file = sessionStorage.getItem('img') as string;
     dispatch(
       cardAdded({
         id: nanoid(),
@@ -37,7 +37,7 @@ const FormPage: React.FC = () => {
 
   const [messageValid, changeMessageValid] = useState<boolean>(true);
 
-  sessionStorage.setItem('page', 'Forms');
+  // sessionStorage.setItem('page', 'Forms');
 
   const arr = useSelector((state: IRootState) => state.formCards);
 

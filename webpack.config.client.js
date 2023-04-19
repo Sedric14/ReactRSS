@@ -1,11 +1,11 @@
 const webpack = require('webpack');
-const MiniCssExtactPlugin = require('mini-css-extact-plugin');
 const config = require('./webpack.common').createConfig({
   target: 'client',
 });
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   ...config,
@@ -28,8 +28,8 @@ module.exports = {
     rules: [
       ...config.module.rules,
       {
-        test: /\.css$/,
-        use: [MiniCssExtactPlugin.loader, 'css-loader'],
+        test: /\.(s*)css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         // loader: 'ts-loader',
         // options: {
         //   configFile: 'tsconfig.client.json',
@@ -39,7 +39,9 @@ module.exports = {
   },
   plugins: [
     ...config.plugins,
-    new MiniCssExtactPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+    }),
     new CleanWebpackPlugin(),
     new WebpackManifestPlugin(),
   ],

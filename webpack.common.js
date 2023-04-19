@@ -1,8 +1,8 @@
 const { join } = require('path');
-const { webpack } = require('webpack');
+const webpack = require('webpack');
 
 function createConfig({ target }) {
-  let root = join(__dirname, '../');
+  let root = join(__dirname, '');
   let src = join(root, 'src');
   let name = '[name].js';
   let dist = join(root, 'dist', target);
