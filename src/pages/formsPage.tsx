@@ -11,7 +11,6 @@ import { nanoid } from '@reduxjs/toolkit';
 import { cardAdded } from '../feauters/formSlice';
 
 const FormPage: React.FC = () => {
-  console.log('forms');
   const {
     register,
     handleSubmit,
@@ -22,7 +21,7 @@ const FormPage: React.FC = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data: FormFields) => {
-    // data.file = sessionStorage.getItem('img') as string;
+    data.file = sessionStorage.getItem('img') as string;
     dispatch(
       cardAdded({
         id: nanoid(),
@@ -36,9 +35,7 @@ const FormPage: React.FC = () => {
     reset();
   };
 
-  const [messageValid, changeMessageValid] = useState<boolean>(true);
-
-  // sessionStorage.setItem('page', 'Forms');
+  const [messageValid, changeMessageValid] = useState<boolean>(false);
 
   const arr = useSelector((state: IRootState) => state.formCards);
 

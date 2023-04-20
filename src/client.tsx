@@ -11,7 +11,6 @@ import store from 'app/store';
 import App from 'app/app';
 
 function run(store: Store) {
-  console.log('hydrate');
   const container = document.getElementById('root') as Element;
   hydrateRoot(
     container,

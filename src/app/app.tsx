@@ -25,14 +25,14 @@ const App: React.FC = () => {
         </aside>
         <div className="base">
           <Switch>
-            {ROUTES.map((route) => (
+            {/* {ROUTES.map((route) => (
               // eslint-disable-next-line react/jsx-key
               <Route {...route} />
-            ))}
-            {/* <Route path="/" component={Home} />
+            ))} */}
             <Route path="/about" component={About} />
             <Route path="/forms" component={FormPage} />
-            <Route path="*" component={NotFound} /> */}
+            <Route exact path="/" component={Home} />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </main>

@@ -8,8 +8,6 @@ import store from './app/store';
 import { Provider } from 'react-redux';
 import './styles.scss';
 
-// if (!sessionStorage.getItem('page')) sessionStorage.setItem('page', 'Home');
-
 // const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 export const renderApp = (
   // <StrictMode>
