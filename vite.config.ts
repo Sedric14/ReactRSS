@@ -2,12 +2,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
+import istanbul from 'vite-plugin-istanbul';
 
 export default defineConfig({
   cacheDir: './node_modules/.vite/react-app',
 
   server: {
-    port: 4200,
+    port: 3000,
     host: 'localhost',
   },
 
@@ -18,6 +19,10 @@ export default defineConfig({
 
   plugins: [
     react(),
+    istanbul({
+      cypress: true,
+      requireEnv: false,
+    }),
     viteTsConfigPaths({
       root: './',
     }),

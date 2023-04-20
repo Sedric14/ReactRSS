@@ -6,7 +6,6 @@ import NotFound from '../pages/notFound';
 import FormPage from '../pages/formsPage';
 
 import '../styles.scss';
-import { ROUTES } from 'routes';
 
 const App: React.FC = () => {
   return (
@@ -25,10 +24,6 @@ const App: React.FC = () => {
         </aside>
         <div className="base">
           <Switch>
-            {/* {ROUTES.map((route) => (
-              // eslint-disable-next-line react/jsx-key
-              <Route {...route} />
-            ))} */}
             <Route path="/about" component={About} />
             <Route path="/forms" component={FormPage} />
             <Route exact path="/" component={Home} />

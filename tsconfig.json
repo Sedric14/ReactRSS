@@ -10,7 +10,7 @@
     "module": "esnext",
     "skipDefaultLibCheck": true,
     "allowJs": false,
-    "types": ["vite/client", "vitest"],
+    "types": ["vitest"],
     "target": "esnext",
     "lib": ["dom", "esnext", "dom.iterable"],
     "jsx": "react",

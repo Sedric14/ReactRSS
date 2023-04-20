@@ -26,9 +26,7 @@ const Card = ({ visible = false, content = emptyModalCard, onClose }: ModalProps
   return (
     <div className="wrapper" onClick={onClose}>
       <div className="card" onClick={(e) => e.stopPropagation()}>
-        <h2 className="desCard">
-          {content.description ? content.description : content.alt_description}
-        </h2>
+        <h2 className="desCard">{content.description}</h2>
         <img className="imgCard" src={content.urls.regular} alt="img"></img>
         <div className="info">
           <p className="size">
