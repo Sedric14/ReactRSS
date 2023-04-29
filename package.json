@@ -3,17 +3,18 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "start:ssr": "npm run build & npm run start:server",
+    "start": "nx serve",
+    "tests:e2e": "cypress run --e2e & npx nyc report --reporter=text-summary",
+
     "build:client": "webpack --config webpack.config.client.js",
     "build:server": "webpack --config webpack.config.server.js",
     "start:server": "nodemon dist/server/main.js",
     "build": "npm run build:client & npm run build:server",
     "cypress:open": "cypress open",
-    "build:start": "npm run build & npm run start:server",
-    "start": "nx serve",
     "test": "nx test",
     "test:coverage": "vitest run --environment jsdom --coverage",
-    "lint": "eslint src --ext .tsx,.ts",
-    "tests:e2e": "cypress run --e2e & npx nyc report --reporter=text-summary"
+    "lint": "eslint src --ext .tsx,.ts"
   },
   "private": true,
   "dependencies": {
