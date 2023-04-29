@@ -13,7 +13,7 @@ const Board = () => {
   const query = useSelector(SelectSave).value;
   const onClose = () => setModal(false);
 
-  const { data: posts, isLoading, isSuccess, isError, error } = useGetPostsQuery(query);
+  const { data: posts, isLoading, isSuccess } = useGetPostsQuery(query);
 
   let content;
 
@@ -37,8 +37,6 @@ const Board = () => {
         }}
       />
     ));
-  } else if (isError) {
-    content = <div>{error.toString()}</div>;
   }
 
   return (

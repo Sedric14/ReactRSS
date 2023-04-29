@@ -8,13 +8,12 @@
     "start:server": "nodemon dist/server/main.js",
     "build": "npm run build:client & npm run build:server",
     "cypress:open": "cypress open",
-    "build:start": "npm run build:client & npm run build:server & npm run start:server",
+    "build:start": "npm run build & npm run start:server",
     "start": "nx serve",
     "test": "nx test",
     "test:coverage": "vitest run --environment jsdom --coverage",
     "lint": "eslint src --ext .tsx,.ts",
-    "start:coverage": "react-scripts -r @cypress/instrument-cra start",
-    "cy:run-unit": "cypress run --e2e"
+    "tests:e2e": "cypress run --e2e & npx nyc report --reporter=text-summary"
   },
   "private": true,
   "dependencies": {

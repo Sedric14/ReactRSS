@@ -8,8 +8,7 @@ export const apiSlice = createApi({
   }),
   endpoints: (builder) => ({
     getPosts: builder.query<ResultTypes, string>({
-      query: (quer: string) =>
-        `${quer || 'nature'}&client_id=fQqz6U7P1FNyV9b74t3Yyf19ib3mAawCyd7aNYALAak`,
+      query: (quer: string) => `${quer}&client_id=fQqz6U7P1FNyV9b74t3Yyf19ib3mAawCyd7aNYALAak`,
     }),
   }),
 });

@@ -1,6 +1,6 @@
 describe('The Home Page', () => {
   it('successfully loads', () => {
-    cy.visit('/'); // change URL to match your dev URL
+    cy.visit('/');
   });
 
   it('show modal', () => {
@@ -17,5 +17,7 @@ describe('The Home Page', () => {
     cy.visit('/');
     cy.get('.searchInput').type('SDFGHJKL').type('{enter}');
     cy.contains('Nothing was found according to your request');
+    cy.get('.searchInput').type('{selectAll}').type('{backspace}').type('car');
+    cy.get('.btnSearch').click();
   });
 });

@@ -8,7 +8,7 @@ export default defineConfig({
   cacheDir: './node_modules/.vite/react-app',
 
   server: {
-    port: 3000,
+    port: 8080,
     host: 'localhost',
   },
 
