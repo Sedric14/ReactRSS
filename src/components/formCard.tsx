@@ -1,4 +1,4 @@
-import { FormFields } from 'app/interfaces';
+import { FormFields } from '../app/interfaces';
 import React from 'react';
 
 export interface IP {

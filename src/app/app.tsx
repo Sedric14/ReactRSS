@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
-import About from 'pages/about';
-import Home from 'pages/home';
-import NotFound from 'pages/notFound';
-import FormPage from 'pages/formsPage';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link, Route, Switch } from 'react-router-dom';
+import About from '../pages/about';
+import Home from '../pages/home';
+import NotFound from '../pages/notFound';
+import FormPage from '../pages/formsPage';
+
+import '../styles.scss';
 
 const App: React.FC = () => {
   return (
@@ -22,12 +23,12 @@ const App: React.FC = () => {
           </div>
         </aside>
         <div className="base">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/forms" element={<FormPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Switch>
+            <Route path="/about" component={About} />
+            <Route path="/forms" component={FormPage} />
+            <Route exact path="/" component={Home} />
+            <Route component={NotFound} />
+          </Switch>
         </div>
       </main>
       <footer className="footer">Copyright 2023</footer>

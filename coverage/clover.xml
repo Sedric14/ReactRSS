@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1683048114598" clover="3.2.0">
+  <project timestamp="1683048114598" name="All files">
+    <metrics statements="258" coveredstatements="258" conditionals="78" coveredconditionals="75" methods="96" coveredmethods="96" elements="432" coveredelements="429" complexity="0" loc="258" ncloc="258" packages="10" files="36" classes="36"/>
+    <package name="RSS.Новая папка.ReactRSS.src">
+      <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="0" coveredmethods="0"/>
+      <file name="main.tsx" path="C:/RSS/Новая папка/ReactRSS/src/main.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="0" coveredmethods="0"/>
+        <line num="9" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="8" type="stmt"/>
+        <line num="12" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="RSS.Новая папка.ReactRSS.src.app">
+      <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="app.tsx" path="C:/RSS/Новая папка/ReactRSS/src/app/app.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="11" count="16" type="stmt"/>
+        <line num="37" count="8" type="stmt"/>
+        <line num="39" count="8" type="stmt"/>
+      </file>
+      <file name="data.tsx" path="C:/RSS/Новая папка/ReactRSS/src/app/data.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="29" count="8" type="stmt"/>
+        <line num="41" count="8" type="stmt"/>
+      </file>
+      <file name="store.tsx" path="C:/RSS/Новая папка/ReactRSS/src/app/store.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="15" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="RSS.Новая папка.ReactRSS.src.components">
+      <metrics statements="68" coveredstatements="68" conditionals="29" coveredconditionals="28" methods="27" coveredmethods="27"/>
+      <file name="board.tsx" path="C:/RSS/Новая папка/ReactRSS/src/components/board.tsx">
+        <metrics statements="18" coveredstatements="18" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
+        <line num="10" count="44" type="stmt"/>
+        <line num="11" count="44" type="stmt"/>
+        <line num="12" count="44" type="stmt"/>
+        <line num="13" count="44" type="stmt"/>
+        <line num="14" count="44" type="stmt"/>
+        <line num="16" count="44" type="stmt"/>
+        <line num="20" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="24" type="stmt"/>
+        <line num="22" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="28" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="14" type="stmt"/>
+        <line num="30" count="140" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="42" count="44" type="stmt"/>
+        <line num="48" count="8" type="stmt"/>
+        <line num="50" count="8" type="stmt"/>
+      </file>
+      <file name="card.tsx" path="C:/RSS/Новая папка/ReactRSS/src/components/card.tsx">
+        <metrics statements="15" coveredstatements="15" conditionals="4" coveredconditionals="3" methods="7" coveredmethods="7"/>
+        <line num="6" count="44" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="44" type="stmt"/>
+        <line num="8" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="44" type="stmt"/>
+        <line num="12" count="27" type="stmt"/>
+        <line num="13" count="27" type="stmt"/>
+        <line num="16" count="44" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="12" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="48" count="8" type="stmt"/>
+        <line num="50" count="8" type="stmt"/>
+      </file>
+      <file name="form.tsx" path="C:/RSS/Новая папка/ReactRSS/src/components/form.tsx">
+        <metrics statements="7" coveredstatements="7" conditionals="16" coveredconditionals="16" methods="3" coveredmethods="3"/>
+        <line num="1" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="14" type="stmt"/>
+        <line num="157" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="158" count="1" type="stmt"/>
+        <line num="172" count="8" type="stmt"/>
+        <line num="174" count="8" type="stmt"/>
+      </file>
+      <file name="formCard.tsx" path="C:/RSS/Новая папка/ReactRSS/src/components/formCard.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+        <line num="32" count="8" type="stmt"/>
+      </file>
+      <file name="image.tsx" path="C:/RSS/Новая папка/ReactRSS/src/components/image.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="11" count="140" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="20" count="8" type="stmt"/>
+        <line num="22" count="8" type="stmt"/>
+      </file>
+      <file name="search.tsx" path="C:/RSS/Новая папка/ReactRSS/src/components/search.tsx">
+        <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="5"/>
+        <line num="6" count="14" type="stmt"/>
+        <line num="7" count="14" type="stmt"/>
+        <line num="8" count="14" type="stmt"/>
+        <line num="9" count="45" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="14" type="stmt"/>
+        <line num="16" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="14" type="stmt"/>
+        <line num="34" count="8" type="stmt"/>
+        <line num="36" count="8" type="stmt"/>
+      </file>
+      <file name="spinner.tsx" path="C:/RSS/Новая папка/ReactRSS/src/components/spinner.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="24" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="15" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="RSS.Новая папка.ReactRSS.src.feauters">
+      <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="6" coveredmethods="6"/>
+      <file name="apiSlice.tsx" path="C:/RSS/Новая папка/ReactRSS/src/feauters/apiSlice.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
+      </file>
+      <file name="formSlice.tsx" path="C:/RSS/Новая папка/ReactRSS/src/feauters/formSlice.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
+      </file>
+      <file name="saveSearchSlice.tsx" path="C:/RSS/Новая папка/ReactRSS/src/feauters/saveSearchSlice.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="15" count="101" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="RSS.Новая папка.ReactRSS.src.pages">
+      <metrics statements="32" coveredstatements="32" conditionals="5" coveredconditionals="5" methods="12" coveredmethods="12"/>
+      <file name="about.tsx" path="C:/RSS/Новая папка/ReactRSS/src/pages/about.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="12" count="8" type="stmt"/>
+      </file>
+      <file name="formsPage.tsx" path="C:/RSS/Новая папка/ReactRSS/src/pages/formsPage.tsx">
+        <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+        <line num="13" count="14" type="stmt"/>
+        <line num="19" count="14" type="stmt"/>
+        <line num="21" count="14" type="stmt"/>
+        <line num="23" count="14" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="14" type="stmt"/>
+        <line num="40" count="17" type="stmt"/>
+        <line num="42" count="14" type="stmt"/>
+        <line num="43" count="6" type="stmt"/>
+        <line num="46" count="14" type="stmt"/>
+        <line num="56" count="8" type="stmt"/>
+        <line num="58" count="8" type="stmt"/>
+      </file>
+      <file name="home.tsx" path="C:/RSS/Новая папка/ReactRSS/src/pages/home.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
+      </file>
+      <file name="notFound.tsx" path="C:/RSS/Новая папка/ReactRSS/src/pages/notFound.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="12" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="ReactRSS.src">
+      <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="0" coveredmethods="0"/>
+      <file name="main.tsx" path="C:/ReactRSS/src/main.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="0" coveredmethods="0"/>
+        <line num="9" count="24" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="24" type="stmt"/>
+        <line num="12" count="24" type="stmt"/>
+      </file>
+    </package>
+    <package name="ReactRSS.src.app">
+      <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="app.tsx" path="C:/ReactRSS/src/app/app.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="24" type="stmt"/>
+        <line num="11" count="48" type="stmt"/>
+        <line num="37" count="24" type="stmt"/>
+        <line num="39" count="24" type="stmt"/>
+      </file>
+      <file name="data.tsx" path="C:/ReactRSS/src/app/data.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="24" type="stmt"/>
+        <line num="23" count="24" type="stmt"/>
+        <line num="29" count="24" type="stmt"/>
+        <line num="41" count="24" type="stmt"/>
+      </file>
+      <file name="store.tsx" path="C:/ReactRSS/src/app/store.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="24" type="stmt"/>
+        <line num="15" count="24" type="stmt"/>
+      </file>
+    </package>
+    <package name="ReactRSS.src.components">
+      <metrics statements="70" coveredstatements="70" conditionals="31" coveredconditionals="30" methods="27" coveredmethods="27"/>
+      <file name="board.tsx" path="C:/ReactRSS/src/components/board.tsx">
+        <metrics statements="20" coveredstatements="20" conditionals="7" coveredconditionals="7" methods="5" coveredmethods="5"/>
+        <line num="10" count="120" type="stmt"/>
+        <line num="11" count="120" type="stmt"/>
+        <line num="12" count="120" type="stmt"/>
+        <line num="13" count="120" type="stmt"/>
+        <line num="14" count="120" type="stmt"/>
+        <line num="16" count="120" type="stmt"/>
+        <line num="20" count="120" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="64" type="stmt"/>
+        <line num="22" count="56" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="28" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="42" type="stmt"/>
+        <line num="30" count="420" type="stmt"/>
+        <line num="35" count="6" type="stmt"/>
+        <line num="36" count="6" type="stmt"/>
+        <line num="40" count="84" type="cond" truecount="1" falsecount="0"/>
+        <line num="41" count="16" type="stmt"/>
+        <line num="44" count="46" type="stmt"/>
+        <line num="50" count="24" type="stmt"/>
+        <line num="52" count="24" type="stmt"/>
+      </file>
+      <file name="card.tsx" path="C:/ReactRSS/src/components/card.tsx">
+        <metrics statements="15" coveredstatements="15" conditionals="4" coveredconditionals="3" methods="7" coveredmethods="7"/>
+        <line num="6" count="120" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="120" type="stmt"/>
+        <line num="8" count="35" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="120" type="stmt"/>
+        <line num="12" count="71" type="stmt"/>
+        <line num="13" count="71" type="stmt"/>
+        <line num="16" count="120" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="21" count="36" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="26" count="12" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="48" count="24" type="stmt"/>
+        <line num="50" count="24" type="stmt"/>
+      </file>
+      <file name="form.tsx" path="C:/ReactRSS/src/components/form.tsx">
+        <metrics statements="7" coveredstatements="7" conditionals="16" coveredconditionals="16" methods="3" coveredmethods="3"/>
+        <line num="1" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="24" type="stmt"/>
+        <line num="5" count="42" type="stmt"/>
+        <line num="158" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="159" count="3" type="stmt"/>
+        <line num="173" count="24" type="stmt"/>
+        <line num="175" count="24" type="stmt"/>
+      </file>
+      <file name="formCard.tsx" path="C:/ReactRSS/src/components/formCard.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="24" type="stmt"/>
+        <line num="10" count="18" type="stmt"/>
+        <line num="30" count="24" type="stmt"/>
+        <line num="32" count="24" type="stmt"/>
+      </file>
+      <file name="image.tsx" path="C:/ReactRSS/src/components/image.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="24" type="stmt"/>
+        <line num="11" count="420" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="20" count="24" type="stmt"/>
+        <line num="22" count="24" type="stmt"/>
+      </file>
+      <file name="search.tsx" path="C:/ReactRSS/src/components/search.tsx">
+        <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="5"/>
+        <line num="6" count="40" type="stmt"/>
+        <line num="7" count="40" type="stmt"/>
+        <line num="8" count="40" type="stmt"/>
+        <line num="9" count="118" type="stmt"/>
+        <line num="11" count="40" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="40" type="stmt"/>
+        <line num="16" count="32" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="21" count="40" type="stmt"/>
+        <line num="34" count="24" type="stmt"/>
+        <line num="36" count="24" type="stmt"/>
+      </file>
+      <file name="spinner.tsx" path="C:/ReactRSS/src/components/spinner.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="3" count="24" type="stmt"/>
+        <line num="4" count="64" type="stmt"/>
+        <line num="13" count="24" type="stmt"/>
+        <line num="15" count="24" type="stmt"/>
+      </file>
+    </package>
+    <package name="ReactRSS.src.feauters">
+      <metrics statements="14" coveredstatements="14" conditionals="3" coveredconditionals="2" methods="6" coveredmethods="6"/>
+      <file name="apiSlice.tsx" path="C:/ReactRSS/src/feauters/apiSlice.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="4" count="24" type="stmt"/>
+        <line num="9" count="24" type="stmt"/>
+        <line num="12" count="17" type="cond" truecount="1" falsecount="1"/>
+        <line num="17" count="24" type="stmt"/>
+      </file>
+      <file name="formSlice.tsx" path="C:/ReactRSS/src/feauters/formSlice.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="24" type="stmt"/>
+        <line num="6" count="24" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="16" count="24" type="stmt"/>
+      </file>
+      <file name="saveSearchSlice.tsx" path="C:/ReactRSS/src/feauters/saveSearchSlice.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="24" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="14" count="24" type="stmt"/>
+        <line num="15" count="268" type="stmt"/>
+        <line num="17" count="24" type="stmt"/>
+      </file>
+    </package>
+    <package name="ReactRSS.src.pages">
+      <metrics statements="32" coveredstatements="32" conditionals="5" coveredconditionals="5" methods="12" coveredmethods="12"/>
+      <file name="about.tsx" path="C:/ReactRSS/src/pages/about.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="3" count="24" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="10" count="24" type="stmt"/>
+        <line num="12" count="24" type="stmt"/>
+      </file>
+      <file name="formsPage.tsx" path="C:/ReactRSS/src/pages/formsPage.tsx">
+        <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+        <line num="13" count="42" type="stmt"/>
+        <line num="19" count="42" type="stmt"/>
+        <line num="21" count="42" type="stmt"/>
+        <line num="23" count="42" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="38" count="42" type="stmt"/>
+        <line num="40" count="51" type="stmt"/>
+        <line num="42" count="42" type="stmt"/>
+        <line num="43" count="18" type="stmt"/>
+        <line num="46" count="42" type="stmt"/>
+        <line num="56" count="24" type="stmt"/>
+        <line num="58" count="24" type="stmt"/>
+      </file>
+      <file name="home.tsx" path="C:/ReactRSS/src/pages/home.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="24" type="stmt"/>
+        <line num="6" count="30" type="stmt"/>
+        <line num="14" count="24" type="stmt"/>
+        <line num="16" count="24" type="stmt"/>
+      </file>
+      <file name="notFound.tsx" path="C:/ReactRSS/src/pages/notFound.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="3" count="24" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="10" count="24" type="stmt"/>
+        <line num="12" count="24" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

@@ -1,5 +1,5 @@
-import { IRootState } from 'app/store';
-import { saveValue } from 'feauters/saveSearchSlice';
+import { IRootState } from '../app/store';
+import { saveValue } from '../feauters/saveSearchSlice';
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

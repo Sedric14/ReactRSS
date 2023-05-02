@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/",
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -9,7 +10,7 @@
     "module": "esnext",
     "skipDefaultLibCheck": true,
     "allowJs": false,
-    "types": ["vite/client", "vitest"],
+    "types": ["vitest"],
     "target": "esnext",
     "lib": ["dom", "esnext", "dom.iterable"],
     "jsx": "react",
@@ -23,17 +24,5 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "resolveJsonModule": true
-  },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ],
-  "compileOnSave": false,
-  "exclude": ["node_modules", "tmp"]
+  }
 }

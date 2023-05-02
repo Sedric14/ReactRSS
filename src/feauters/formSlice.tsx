@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FormFields } from 'app/interfaces';
+import { FormFields } from '../app/interfaces';
 
 const initialState: FormFields[] = [];
 

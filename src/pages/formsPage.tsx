@@ -1,11 +1,10 @@
-import { FormFields } from 'app/interfaces';
+import { FormFields } from '../app/interfaces';
 import React, { useState } from 'react';
-import FormCard from 'components/formCard';
-import Form from 'components/form';
+import FormCard from '../components/formCard';
+import Form from '../components/form';
 import { useForm } from 'react-hook-form';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux';
-import { IRootState } from 'app/store';
+import { IRootState } from '../app/store';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
@@ -36,13 +35,11 @@ const FormPage: React.FC = () => {
     reset();
   };
 
-  const [messageValid, changeMessageValid] = useState<boolean>(true);
-
-  sessionStorage.setItem('page', 'Forms');
+  const [messageValid, changeMessageValid] = useState<boolean>(false);
 
   const arr = useSelector((state: IRootState) => state.formCards);
 
-  const result = arr.map((element, index) => {
+  const result = arr.map((element: FormFields, index: number) => {
     return <FormCard element={element} index={index} key={index} />;
   });
 

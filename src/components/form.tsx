@@ -1,12 +1,10 @@
-import { RefTypes } from 'app/interfaces';
+import { RefTypes } from '../app/interfaces';
 import React from 'react';
 
 const Form = (props: RefTypes) => {
   return (
     <div>
-      <header>
-        <h2 className="headerText">{sessionStorage.getItem('page')}</h2>
-      </header>
+      <header>{<h2 className="headerText">{'Forms'}</h2>}</header>
       <h1 className="title">Forms page</h1>
       <form className="form" onSubmit={props.handle} data-testid="form">
         <label className="label">
@@ -156,7 +154,6 @@ const Form = (props: RefTypes) => {
               },
             })}
             onChange={(e) => {
-              if (props.errors.file) props.errors.file.message = '';
               if (e.target?.files) {
                 sessionStorage.setItem('img', URL.createObjectURL(e.target?.files[0]));
               }

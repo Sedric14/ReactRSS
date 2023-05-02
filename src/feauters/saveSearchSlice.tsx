@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IRootState } from 'app/store';
+import { IRootState } from '../app/store';
 
 const saveSlice = createSlice({
   name: 'saveSearch',
